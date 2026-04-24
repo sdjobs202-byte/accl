@@ -161,7 +161,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-12">
-                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                <form className="space-y-4" action="#">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">이름</label>
                     <input type="text" className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="홍길동" />
@@ -174,7 +174,7 @@ export default function Home() {
                     <label className="block text-sm font-medium text-gray-700 mb-1">문의 내용</label>
                     <textarea rows={4} className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="문의하실 내용을 입력해주세요."></textarea>
                   </div>
-                  <button className="w-full bg-gray-900 text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                  <button type="button" className="w-full bg-gray-900 text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors">
                     문의 남기기
                   </button>
                 </form>
