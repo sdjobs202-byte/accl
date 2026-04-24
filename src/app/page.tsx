@@ -112,6 +112,78 @@ export default function Home() {
         </div>
       </section>
 
+    {/* Reference Section */}
+      <section id="reference" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">함께하는 파트너 & 수강생 후기</h2>
+            <div className="w-24 h-1 bg-[#A92B2B] mx-auto rounded-full mb-8"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              이미 많은 분들이 ACCL과 함께 AI 역량을 강화하고 업무 혁신을 이루어내고 있습니다.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { company: "A기업 마케팅팀", text: "업무 생산성이 300% 향상되었습니다. 실무에 바로 적용할 수 있는 최고의 강의입니다." },
+              { company: "B기관 교육 담당자", text: "조직 전체의 AI 리터러시가 높아져 커뮤니케이션 비용이 획기적으로 줄었습니다." },
+              { company: "C스타트업 대표", text: "ACCL 자격증 취득 후 직원들의 데이터 분석 능력이 눈에 띄게 발전했습니다." }
+            ].map((review, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-[#F9FAFB] border border-gray-100">
+                <div className="flex text-[#A92B2B] mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <svg key={j} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 italic mb-4">"{review.text}"</p>
+                <p className="text-sm font-bold text-gray-900">- {review.company}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-24 bg-[#F9FAFB]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+            <div className="grid md:grid-cols-2">
+              <div className="p-12 bg-[#A92B2B] text-white">
+                <h2 className="text-3xl font-bold mb-4">궁금한 점이 있으신가요?</h2>
+                <p className="text-white/80 mb-8">
+                  교육 과정, 자격증, 단체 수강 등 무엇이든 물어보세요. 빠른 시간 내에 답변해 드리겠습니다.
+                </p>
+                <div className="space-y-4">
+                  <p className="flex items-center"><span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-4">✉</span> contact@accl.kr</p>
+                  <p className="flex items-center"><span className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center mr-4">📞</span> 1588-0000</p>
+                </div>
+              </div>
+              <div className="p-12">
+                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">이름</label>
+                    <input type="text" className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="홍길동" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">이메일</label>
+                    <input type="email" className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="example@email.com" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">문의 내용</label>
+                    <textarea rows={4} className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="문의하실 내용을 입력해주세요."></textarea>
+                  </div>
+                  <button className="w-full bg-gray-900 text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                    문의 남기기
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Exam Banner CTA */}
       <section className="py-20 bg-[#1A1A1A] relative overflow-hidden text-center">
         <div className="relative z-10 max-w-4xl mx-auto px-4">
