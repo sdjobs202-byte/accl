@@ -116,31 +116,66 @@ export default function Home() {
       <section id="reference" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">함께하는 파트너 & 수강생 후기</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">함께하는 파트너 & 주요 레퍼런스</h2>
             <div className="w-24 h-1 bg-[#A92B2B] mx-auto rounded-full mb-8"></div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              이미 많은 분들이 ACCL과 함께 AI 역량을 강화하고 업무 혁신을 이루어내고 있습니다.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              2023년 7월부터 다양한 기업, 기관, 협단체, 대학, 시니어, 여성인력개발센터 등<br className="hidden md:block" /> 다양한 대상에 AI 활용 콘텐츠 특강 및 워크숍 제공 경험을 보유하고 있습니다.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              { company: "A기업 마케팅팀", text: "업무 생산성이 300% 향상되었습니다. 실무에 바로 적용할 수 있는 최고의 강의입니다." },
-              { company: "B기관 교육 담당자", text: "조직 전체의 AI 리터러시가 높아져 커뮤니케이션 비용이 획기적으로 줄었습니다." },
-              { company: "C스타트업 대표", text: "ACCL 자격증 취득 후 직원들의 데이터 분석 능력이 눈에 띄게 발전했습니다." }
-            ].map((review, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-[#F9FAFB] border border-gray-100">
-                <div className="flex text-[#A92B2B] mb-4">
-                  {[...Array(5)].map((_, j) => (
-                    <svg key={j} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic mb-4">"{review.text}"</p>
-                <p className="text-sm font-bold text-gray-900">- {review.company}</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Category 1 */}
+            <div className="p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+              <div className="w-12 h-12 bg-[#A92B2B]/10 rounded-full flex items-center justify-center mb-6">
+                <Users className="text-[#A92B2B] w-6 h-6" />
               </div>
-            ))}
+              <h3 className="text-xl font-bold text-gray-900 mb-6">신중년 & 경력 단절 여성</h3>
+              <ul className="space-y-3 text-gray-600 text-sm">
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 경기 화성, 양주, 부천 시/군 대상 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> "AI 일잘러", "AI 직무 역량 강화" 온라인 콘텐츠 제작</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> '나는 강사다' 팀 프로젝트 우수상 수상</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 화성 베이비부머 행복캠퍼스 (15회, 40시간)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 공공기관 퇴직자 대상 프로그램 (JM커리어, 34시간)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 군포시청 시니어 대상 AI 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 동대문 여성인력개발센터 마케터 과정 (32시간)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 부평 여성인력개발센터 AI 특강</li>
+              </ul>
+            </div>
+
+            {/* Category 2 */}
+            <div className="p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+              <div className="w-12 h-12 bg-[#A92B2B]/10 rounded-full flex items-center justify-center mb-6">
+                <BookOpen className="text-[#A92B2B] w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">대학 & 청년</h3>
+              <ul className="space-y-3 text-gray-600 text-sm">
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 천안 청년 일자리 공간 (7회)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 단국대 취/창업지원센터 교육 및 온라인 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 고려대 AI 활용 기업 분석 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 성균관대 AI 활용 기업 분석 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 수원과학대 디자인학과 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 성결대 신소재공학과 특강</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 한양대 입사 지원서 워크숍</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 나사렛대 AI 활용 창의적 사고 특강</li>
+              </ul>
+            </div>
+
+            {/* Category 3 */}
+            <div className="p-8 rounded-2xl bg-[#F9FAFB] border border-gray-100 hover:shadow-lg transition-shadow duration-300">
+              <div className="w-12 h-12 bg-[#A92B2B]/10 rounded-full flex items-center justify-center mb-6">
+                <BrainCircuit className="text-[#A92B2B] w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">기업 & 협회 특강</h3>
+              <ul className="space-y-3 text-gray-600 text-sm">
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 동부그룹 신입사원 교육</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 한화큐셀 온보딩 (진천 상공회의소)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 중소기업 팀장급 및 온보딩 (대전 상공회의소)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 한국전자정보통신산업진흥회 (KEA)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 한국디지털융합진흥회 (KODICA)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> 인적자원개발 성과공유회 (한국반도체산업협회)</li>
+                <li className="flex items-start"><CheckCircle2 className="w-4 h-4 text-[#A92B2B] mt-1 mr-2 flex-shrink-0" /> (주)TES 기업 특강</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
