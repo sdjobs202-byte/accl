@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { LogIn, Menu } from "lucide-react";
+import { LogIn, LogOut, Menu, UserCircle } from "lucide-react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,11 +13,13 @@ export const metadata: Metadata = {
   description: "AI 시대, 당신의 성장을 돕는 ACCL",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getServerSession(authOptions);
+
   return (
     <html lang="ko">
       <body className={`${inter.className} min-h-screen flex flex-col bg-[#F9FAFB] text-gray-900`}>
@@ -41,10 +45,24 @@ export default function RootLayout({
                   문의하기
                 </Link>
                 <div className="border-l border-gray-200 h-6 mx-2"></div>
-                <Link href="/login" className="flex items-center text-gray-600 hover:text-[#A92B2B] transition-colors">
-                  <LogIn className="w-5 h-5 mr-1" />
-                  <span className="text-sm font-medium">로그인</span>
-                </Link>
+                
+                {session ? (
+                  <div className="flex items-center space-x-4">
+                    <Link href="/dashboard" className="flex items-center text-gray-600 hover:text-[#A92B2B] transition-colors">
+                      <UserCircle className="w-5 h-5 mr-1" />
+                      <span className="text-sm font-medium">마이페이지</span>
+                    </Link>
+                    <Link href="/api/auth/signout" className="flex items-center text-gray-600 hover:text-[#A92B2B] transition-colors">
+                      <LogOut className="w-5 h-5 mr-1" />
+                      <span className="text-sm font-medium">로그아웃</span>
+                    </Link>
+                  </div>
+                ) : (
+                  <Link href="/login" className="flex items-center text-gray-600 hover:text-[#A92B2B] transition-colors">
+                    <LogIn className="w-5 h-5 mr-1" />
+                    <span className="text-sm font-medium">로그인</span>
+                  </Link>
+                )}
               </nav>
 
               {/* Mobile menu button */}
