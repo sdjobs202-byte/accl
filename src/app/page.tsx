@@ -180,6 +180,107 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Press & Articles Section */}
+      <section className="py-20 bg-[#F3F4F6]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-10">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-2">언론 보도 및 인터뷰</h2>
+              <p className="text-gray-600">커리어웨이 강희승 대표의 활동과 인사이트를 만나보세요.</p>
+            </div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Article 1 */}
+            <a href="#" target="_blank" rel="noopener noreferrer" className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#A92B2B] hover:shadow-md transition-all duration-300">
+              <div className="flex justify-between items-start">
+                <div className="space-y-3">
+                  <span className="inline-block px-3 py-1 bg-red-50 text-[#A92B2B] text-xs font-semibold rounded-full">인터뷰</span>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#A92B2B] transition-colors line-clamp-2">
+                    [인터뷰] 커리어웨이 강희승 대표, "AI 시대, 스타트업 비즈니스 모델 혁신은 선택이 아닌 필수"
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    생성형 AI의 발전이 기업의 생산성과 직결되는 시대에, 스타트업이 살아남기 위한 실무적인 챗GPT 활용법과 비즈니스 전략에 대해 들어보았다.
+                  </p>
+                </div>
+                <div className="ml-4 w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#A92B2B] group-hover:text-white transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400">
+                <span>IT비즈뉴스</span>
+                <span>2024.03.15</span>
+              </div>
+            </a>
+
+            {/* Article 2 */}
+            <a href="#" target="_blank" rel="noopener noreferrer" className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#A92B2B] hover:shadow-md transition-all duration-300">
+              <div className="flex justify-between items-start">
+                <div className="space-y-3">
+                  <span className="inline-block px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full">뉴스</span>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#A92B2B] transition-colors line-clamp-2">
+                    커리어웨이, 기업 임직원 대상 '생성형 AI 실무 적용 워크숍' 성황리 개최
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    단순 이론 교육을 넘어 실제 업무에 적용할 수 있는 프롬프트 엔지니어링 실습 위주의 워크숍으로 참석자들의 큰 호응을 얻었다.
+                  </p>
+                </div>
+                <div className="ml-4 w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#A92B2B] group-hover:text-white transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400">
+                <span>스타트업투데이</span>
+                <span>2024.02.20</span>
+              </div>
+            </a>
+
+            {/* Article 3 */}
+            <a href="#" target="_blank" rel="noopener noreferrer" className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#A92B2B] hover:shadow-md transition-all duration-300">
+              <div className="flex justify-between items-start">
+                <div className="space-y-3">
+                  <span className="inline-block px-3 py-1 bg-green-50 text-green-600 text-xs font-semibold rounded-full">소식</span>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#A92B2B] transition-colors line-clamp-2">
+                    강희승 대표 "시니어 & 경력단절 여성 특화 AI 리터러시 교육 전국으로 확대할 것"
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    디지털 격차 해소를 위해 신중년과 경력단절 여성을 대상으로 한 맞춤형 AI 활용 교육 프로그램을 지자체와 협력하여 더욱 넓혀갈 계획이다.
+                  </p>
+                </div>
+                <div className="ml-4 w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#A92B2B] group-hover:text-white transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400">
+                <span>여성경제신문</span>
+                <span>2023.11.10</span>
+              </div>
+            </a>
+
+            {/* Article 4 */}
+            <a href="#" target="_blank" rel="noopener noreferrer" className="group block bg-white rounded-xl p-6 border border-gray-200 hover:border-[#A92B2B] hover:shadow-md transition-all duration-300">
+              <div className="flex justify-between items-start">
+                <div className="space-y-3">
+                  <span className="inline-block px-3 py-1 bg-purple-50 text-purple-600 text-xs font-semibold rounded-full">전문가 칼럼</span>
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#A92B2B] transition-colors line-clamp-2">
+                    [전문가 칼럼] 챗GPT 시대, 대학생의 취업 준비는 어떻게 달라져야 하는가
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    수많은 정보 속에서 AI를 '비서'로 활용해 나만의 차별화된 이력서를 작성하고 기업을 분석하는 구체적인 노하우를 공개한다.
+                  </p>
+                </div>
+                <div className="ml-4 w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-[#A92B2B] group-hover:text-white transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex justify-between items-center text-xs text-gray-400">
+                <span>캠퍼스잡앤조이</span>
+                <span>2023.09.05</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-[#F9FAFB]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

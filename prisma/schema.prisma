@@ -4,12 +4,13 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -27,6 +28,7 @@ model Exam {
   title        String
   description  String
   passingScore Int
+  examDate     DateTime?
   questions    Question[]
   results      Result[]
   createdAt    DateTime   @default(now())
@@ -59,4 +61,5 @@ model Certificate {
   result            Result   @relation(fields: [resultId], references: [id], onDelete: Cascade)
   certificateNumber String   @unique
   issueDate         DateTime @default(now())
+  pdfUrl            String?
 }

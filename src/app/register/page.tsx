@@ -16,6 +16,14 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
 
+    // Password validation regex
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    if (!passwordRegex.test(data.password)) {
+      setError("비밀번호는 숫자, 영문자(대소문자 포함), 특수기호를 모두 포함하여 8자 이상이어야 합니다.");
+      setLoading(false);
+      return;
+    }
+
     try {
       const response = await fetch("/api/register", {
         method: "POST",
@@ -86,6 +94,9 @@ export default function RegisterPage() {
                 value={data.password}
                 onChange={(e) => setData({ ...data, password: e.target.value })}
               />
+              <p className="mt-2 text-xs text-gray-500">
+                숫자, 영문자(대소문자 모두 포함), 특수기호를 포함해 8자 이상 설정해 주세요.
+              </p>
             </div>
           </div>
 
