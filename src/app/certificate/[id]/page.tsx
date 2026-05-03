@@ -88,7 +88,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
       </div>
 
       <div className="mt-8 flex gap-4 print:hidden">
-        <PrintButton />
+        <PrintButton certificateNumber={displayCertNum} pdfUrl={certificate.pdfUrl} />
         {isAdmin ? (
           <Link
             href="/admin/certificates"

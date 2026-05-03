@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import { sendCertificateEmail } from "@/lib/resend";
 
 export async function POST(
   request: Request,
@@ -61,23 +62,49 @@ export async function POST(
 
     if (resultError) throw resultError;
 
+    let certificateId: string | null = null;
+
     if (passed) {
       const { count } = await supabaseAdmin
         .from("Certificate")
         .select("id", { count: "exact", head: true });
 
       const certificateNumber = String(101 + (count ?? 0)).padStart(4, "0");
+      certificateId = crypto.randomUUID();
 
-      await supabaseAdmin.from("Certificate").insert({
-        id: crypto.randomUUID(),
+      const { error: certError } = await supabaseAdmin.from("Certificate").insert({
+        id: certificateId,
         resultId,
         certificateNumber,
         issueDate: new Date().toISOString(),
         pdfUrl: null,
       });
+
+      if (certError) {
+        console.error("CERTIFICATE INSERT ERROR:", certError);
+        throw certError;
+      }
+
+      const origin =
+        request.headers.get("origin") ??
+        process.env.NEXTAUTH_URL ??
+        "";
+      const certificateUrl = `${origin}/certificate/${certificateId}`;
+
+      try {
+        await sendCertificateEmail({
+          to: user.email,
+          recipientName: user.name ?? user.email,
+          examTitle: exam.title,
+          certificateNumber,
+          certificateUrl,
+        });
+      } catch (mailErr) {
+        console.error("CERTIFICATE EMAIL ERROR:", mailErr);
+      }
     }
 
-    return NextResponse.json({ score, passed });
+    return NextResponse.json({ score, passed, certificateId });
   } catch (error: any) {
     console.error("SUBMIT EXAM ERROR:", error);
     return new NextResponse("Internal Server Error", { status: 500 });

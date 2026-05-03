@@ -122,8 +122,8 @@ export default async function RootLayout({
             <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
               <p>&copy; {new Date().getFullYear()} ACCL. All rights reserved.</p>
               <div className="space-x-4 mt-4 md:mt-0">
-                <a href="#" className="hover:text-white transition-colors">이용약관</a>
-                <a href="#" className="hover:text-white transition-colors">개인정보처리방침</a>
+                <Link href="/terms" className="hover:text-white transition-colors">이용약관</Link>
+                <Link href="/privacy" className="hover:text-white transition-colors">개인정보처리방침</Link>
               </div>
             </div>
           </div>

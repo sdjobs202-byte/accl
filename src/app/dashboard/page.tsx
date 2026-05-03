@@ -34,7 +34,9 @@ export default async function DashboardPage() {
     .order("createdAt", { ascending: false });
 
   const passedResults = results.filter((r: any) => r.passed);
-  const certificates = passedResults.map((r: any) => r.certificate).filter(Boolean);
+  const certificates = passedResults
+    .map((r: any) => (Array.isArray(r.certificate) ? r.certificate[0] : r.certificate))
+    .filter((c: any) => c && c.id);
 
   return (
     <div className="min-h-screen bg-[#F9FAFB] py-12">

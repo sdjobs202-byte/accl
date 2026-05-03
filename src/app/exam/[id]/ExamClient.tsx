@@ -34,10 +34,13 @@ export default function ExamClient({ exam }: { exam: any }) {
       }
 
       const result = await res.json();
-      
-      // 결과 페이지 또는 대시보드로 이동
+
       alert(`시험이 완료되었습니다! 점수: ${result.score}점 (${result.passed ? '합격' : '불합격'})`);
-      router.push("/dashboard");
+      if (result.passed && result.certificateId) {
+        router.push(`/certificate/${result.certificateId}`);
+      } else {
+        router.push("/dashboard");
+      }
       router.refresh();
       
     } catch (error) {
