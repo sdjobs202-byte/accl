@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -6,23 +6,20 @@ import ExamClient from "./ExamClient";
 
 export const dynamic = "force-dynamic";
 
-export default async function ExamPage({ params }: { params: { id: string } }) {
+export default async function ExamPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await getServerSession(authOptions);
-  
+
   if (!session) {
     redirect("/login");
   }
 
-  // params 가 Next.js 15+ 에서는 Promise 일 수 있으므로 await 처리
   const { id } = await params;
-  const examId = id;
 
-  const exam = await prisma.exam.findUnique({
-    where: { id: examId },
-    include: {
-      questions: true,
-    },
-  });
+  const { data: exam } = await supabaseAdmin
+    .from("Exam")
+    .select("*, questions:Question(*)")
+    .eq("id", id)
+    .single();
 
   if (!exam) {
     return (
@@ -35,11 +32,10 @@ export default async function ExamPage({ params }: { params: { id: string } }) {
     );
   }
 
-  // 클라이언트로 정답을 보내지 않도록 필터링
-  const sanitizedQuestions = exam.questions.map(q => ({
+  const sanitizedQuestions = exam.questions.map((q: any) => ({
     id: q.id,
     text: q.text,
-    options: q.options, // This is a JSON string
+    options: q.options,
   }));
 
   const sanitizedExam = {

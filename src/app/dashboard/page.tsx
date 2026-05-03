@@ -3,7 +3,7 @@ import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { Award, BookOpen, Clock, PlayCircle, CheckCircle } from "lucide-react";
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
@@ -14,37 +14,32 @@ export default async function DashboardPage() {
     redirect("/login");
   }
 
-  // 1. 사용자 정보 및 결과(수료증 포함) 가져오기
-  const user = await prisma.user.findUnique({
-    where: { email: session.user.email },
-    include: {
-      results: {
-        include: {
-          exam: true,
-          certificate: true,
-        },
-        orderBy: { createdAt: "desc" }
-      }
-    }
-  });
+  const { data: user } = await supabaseAdmin
+    .from("User")
+    .select("*, results:Result(*, exam:Exam(*), certificate:Certificate(*))")
+    .eq("email", session.user.email)
+    .single();
 
   if (!user) {
     redirect("/login");
   }
 
-  // 2. 전체 시험 목록 가져오기
-  const exams = await prisma.exam.findMany({
-    orderBy: { createdAt: "desc" }
-  });
+  const results = ((user.results as any[]) ?? []).sort(
+    (a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
 
-  const passedResults = user.results.filter(r => r.passed);
-  const certificates = passedResults.map(r => r.certificate).filter(Boolean);
+  const { data: exams } = await supabaseAdmin
+    .from("Exam")
+    .select("*")
+    .order("createdAt", { ascending: false });
+
+  const passedResults = results.filter((r: any) => r.passed);
+  const certificates = passedResults.map((r: any) => r.certificate).filter(Boolean);
 
   return (
     <div className="min-h-screen bg-[#F9FAFB] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Dashboard Header */}
+
         <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-8 flex flex-col md:flex-row justify-between items-center">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 mb-2">환영합니다, {session.user.name}님!</h1>
@@ -65,25 +60,21 @@ export default async function DashboardPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {/* Main Content Area */}
           <div className="md:col-span-2 space-y-8">
-            
-            {/* Available Exams */}
+
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900 flex items-center">
                   <BookOpen className="w-5 h-5 text-[#A92B2B] mr-2" /> 응시 가능한 자격증 시험
                 </h2>
               </div>
-              
+
               <div className="space-y-4">
-                {exams.length === 0 ? (
+                {(exams ?? []).length === 0 ? (
                   <p className="text-gray-500 text-sm">등록된 시험이 없습니다.</p>
                 ) : (
-                  exams.map(exam => {
-                    // 사용자가 해당 시험에 합격했는지 확인
-                    const hasPassed = passedResults.some(r => r.examId === exam.id);
-                    
+                  (exams ?? []).map((exam: any) => {
+                    const hasPassed = passedResults.some((r: any) => r.examId === exam.id);
                     return (
                       <div key={exam.id} className="border border-gray-100 rounded-xl p-5 hover:border-[#A92B2B]/30 transition-colors flex flex-col sm:flex-row justify-between items-start sm:items-center">
                         <div>
@@ -99,18 +90,17 @@ export default async function DashboardPage() {
                           <PlayCircle className="w-4 h-4 mr-1" /> {hasPassed ? "다시 응시하기" : "응시하기"}
                         </Link>
                       </div>
-                    )
+                    );
                   })
                 )}
               </div>
             </div>
 
-            {/* Exam Results History */}
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 flex items-center mb-6">
                 <CheckCircle className="w-5 h-5 text-[#A92B2B] mr-2" /> 내 응시 내역
               </h2>
-              {user.results.length === 0 ? (
+              {results.length === 0 ? (
                 <p className="text-gray-500 text-sm">응시 내역이 없습니다.</p>
               ) : (
                 <div className="overflow-x-auto">
@@ -124,9 +114,9 @@ export default async function DashboardPage() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {user.results.map(r => (
+                      {results.map((r: any) => (
                         <tr key={r.id}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{r.exam.title}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{r.exam?.title}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{r.score}점</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm">
                             {r.passed ? (
@@ -148,9 +138,7 @@ export default async function DashboardPage() {
 
           </div>
 
-          {/* Sidebar */}
           <div className="space-y-8">
-            {/* My Certificates */}
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 flex items-center mb-6">
                 <Award className="w-5 h-5 text-[#A92B2B] mr-2" /> 내 수료증
@@ -164,12 +152,12 @@ export default async function DashboardPage() {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {certificates.map(cert => (
-                    <div key={cert!.id} className="border border-[#A92B2B]/20 bg-red-50/30 rounded-xl p-4 text-center">
+                  {certificates.map((cert: any) => (
+                    <div key={cert.id} className="border border-[#A92B2B]/20 bg-red-50/30 rounded-xl p-4 text-center">
                       <Award className="w-8 h-8 text-[#A92B2B] mx-auto mb-2" />
-                      <p className="font-bold text-sm text-gray-900 mb-1">{cert!.certificateNumber}</p>
-                      <p className="text-xs text-gray-500 mb-3">발급일: {new Date(cert!.issueDate).toLocaleDateString()}</p>
-                      <Link href={`/certificate/${cert!.id}`} className="inline-block bg-[#A92B2B] text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-red-800 transition-colors">
+                      <p className="font-bold text-sm text-gray-900 mb-1">{cert.certificateNumber}</p>
+                      <p className="text-xs text-gray-500 mb-3">발급일: {new Date(cert.issueDate).toLocaleDateString()}</p>
+                      <Link href={`/certificate/${cert.id}`} className="inline-block bg-[#A92B2B] text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-red-800 transition-colors">
                         수료증 보기
                       </Link>
                     </div>

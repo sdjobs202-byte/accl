@@ -1,14 +1,15 @@
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import { notFound } from "next/navigation";
 import ExamForm from "../../ExamForm";
 
 export default async function EditExamPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 
-  const exam = await prisma.exam.findUnique({
-    where: { id },
-    include: { questions: true },
-  });
+  const { data: exam } = await supabaseAdmin
+    .from("Exam")
+    .select("*, questions:Question(*)")
+    .eq("id", id)
+    .single();
 
   if (!exam) notFound();
 
@@ -17,8 +18,8 @@ export default async function EditExamPage({ params }: { params: Promise<{ id: s
     title: exam.title,
     description: exam.description,
     passingScore: exam.passingScore,
-    examDate: exam.examDate ? exam.examDate.toISOString().split("T")[0] : null,
-    questions: exam.questions.map((q) => ({
+    examDate: exam.examDate ? new Date(exam.examDate).toISOString().split("T")[0] : null,
+    questions: exam.questions.map((q: any) => ({
       id: q.id,
       text: q.text,
       options: JSON.parse(q.options) as string[],

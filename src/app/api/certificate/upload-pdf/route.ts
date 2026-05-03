@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { supabaseAdmin } from "@/lib/supabase";
-import { prisma } from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -16,12 +15,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Missing data" }, { status: 400 });
   }
 
-  const buffer = Buffer.from(await pdf.arrayBuffer());
+  const arrayBuffer = await pdf.arrayBuffer();
   const fileName = `certificate-${certificateId}.pdf`;
 
   const { error } = await supabaseAdmin.storage
     .from("certificates")
-    .upload(fileName, buffer, { contentType: "application/pdf", upsert: true });
+    .upload(fileName, arrayBuffer, { contentType: "application/pdf", upsert: true });
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
@@ -29,10 +28,12 @@ export async function POST(request: NextRequest) {
     data: { publicUrl },
   } = supabaseAdmin.storage.from("certificates").getPublicUrl(fileName);
 
-  await prisma.certificate.update({
-    where: { id: certificateId },
-    data: { pdfUrl: publicUrl },
-  });
+  const { error: updateError } = await supabaseAdmin
+    .from("Certificate")
+    .update({ pdfUrl: publicUrl })
+    .eq("id", certificateId);
+
+  if (updateError) return NextResponse.json({ error: updateError.message }, { status: 500 });
 
   return NextResponse.json({ url: publicUrl });
 }

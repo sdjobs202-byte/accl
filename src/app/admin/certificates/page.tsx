@@ -1,24 +1,17 @@
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import Link from "next/link";
 
 export default async function CertificatesPage() {
-  const certificates = await prisma.certificate.findMany({
-    orderBy: { issueDate: "desc" },
-    include: {
-      result: {
-        include: {
-          user: { select: { name: true, email: true } },
-          exam: { select: { title: true } },
-        },
-      },
-    },
-  });
+  const { data: certificates } = await supabaseAdmin
+    .from("Certificate")
+    .select("*, result:Result(score, user:User(name, email), exam:Exam(title))")
+    .order("issueDate", { ascending: false });
 
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-gray-900">자격증 관리</h1>
-        <span className="text-sm text-gray-500">총 {certificates.length}건</span>
+        <span className="text-sm text-gray-500">총 {(certificates ?? []).length}건</span>
       </div>
 
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
@@ -35,25 +28,25 @@ export default async function CertificatesPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {certificates.map((cert) => (
+            {(certificates ?? []).map((cert: any) => (
               <tr key={cert.id} className="hover:bg-gray-50">
                 <td className="px-4 py-3 font-mono text-gray-700 text-xs">
                   {cert.certificateNumber}
                 </td>
                 <td className="px-4 py-3">
-                  <p className="font-medium">{cert.result.user.name}</p>
-                  <p className="text-xs text-gray-400">{cert.result.user.email}</p>
+                  <p className="font-medium">{cert.result?.user?.name}</p>
+                  <p className="text-xs text-gray-400">{cert.result?.user?.email}</p>
                 </td>
                 <td className="px-4 py-3 text-gray-600 max-w-[160px] truncate">
-                  {cert.result.exam.title}
+                  {cert.result?.exam?.title}
                 </td>
                 <td className="px-4 py-3 text-center">
                   <span className="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                    {cert.result.score}점
+                    {cert.result?.score}점
                   </span>
                 </td>
                 <td className="px-4 py-3 text-gray-500">
-                  {cert.issueDate.toLocaleDateString("ko-KR")}
+                  {new Date(cert.issueDate).toLocaleDateString("ko-KR")}
                 </td>
                 <td className="px-4 py-3 text-center">
                   {cert.pdfUrl ? (
@@ -79,7 +72,7 @@ export default async function CertificatesPage() {
                 </td>
               </tr>
             ))}
-            {certificates.length === 0 && (
+            {(certificates ?? []).length === 0 && (
               <tr>
                 <td colSpan={7} className="px-4 py-8 text-center text-gray-400">
                   발급된 자격증이 없습니다

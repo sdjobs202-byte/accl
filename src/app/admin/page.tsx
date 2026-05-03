@@ -1,32 +1,22 @@
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import Link from "next/link";
 
 export default async function AdminPage() {
-  const [totalUsers, totalExams, totalResults, totalCerts, recentUsers, recentCerts] =
-    await Promise.all([
-      prisma.user.count({ where: { role: "USER" } }),
-      prisma.exam.count(),
-      prisma.result.count(),
-      prisma.certificate.count(),
-      prisma.user.findMany({
-        where: { role: "USER" },
-        orderBy: { createdAt: "desc" },
-        take: 5,
-        select: { id: true, name: true, email: true, createdAt: true },
-      }),
-      prisma.certificate.findMany({
-        orderBy: { issueDate: "desc" },
-        take: 5,
-        include: {
-          result: {
-            include: {
-              user: { select: { name: true } },
-              exam: { select: { title: true } },
-            },
-          },
-        },
-      }),
-    ]);
+  const [
+    { count: totalUsers },
+    { count: totalExams },
+    { count: totalResults },
+    { count: totalCerts },
+    { data: recentUsers },
+    { data: recentCerts },
+  ] = await Promise.all([
+    supabaseAdmin.from("User").select("id", { count: "exact", head: true }).eq("role", "USER"),
+    supabaseAdmin.from("Exam").select("id", { count: "exact", head: true }),
+    supabaseAdmin.from("Result").select("id", { count: "exact", head: true }),
+    supabaseAdmin.from("Certificate").select("id", { count: "exact", head: true }),
+    supabaseAdmin.from("User").select("id, name, email, createdAt").eq("role", "USER").order("createdAt", { ascending: false }).limit(5),
+    supabaseAdmin.from("Certificate").select("id, issueDate, result:Result(user:User(name), exam:Exam(title))").order("issueDate", { ascending: false }).limit(5),
+  ]);
 
   return (
     <div>
@@ -34,10 +24,10 @@ export default async function AdminPage() {
 
       <div className="grid grid-cols-4 gap-4 mb-8">
         {[
-          { label: "전체 회원", value: totalUsers, href: "/admin/members" },
-          { label: "시험 종류", value: totalExams, href: "/admin/exams" },
-          { label: "총 응시 횟수", value: totalResults, href: null },
-          { label: "발급 자격증", value: totalCerts, href: "/admin/certificates" },
+          { label: "전체 회원", value: totalUsers ?? 0, href: "/admin/members" },
+          { label: "시험 종류", value: totalExams ?? 0, href: "/admin/exams" },
+          { label: "총 응시 횟수", value: totalResults ?? 0, href: null },
+          { label: "발급 자격증", value: totalCerts ?? 0, href: "/admin/certificates" },
         ].map(({ label, value, href }) => (
           <div key={label} className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
             <p className="text-sm text-gray-500">{label}</p>
@@ -63,14 +53,14 @@ export default async function AdminPage() {
               </tr>
             </thead>
             <tbody>
-              {recentUsers.map((u) => (
+              {(recentUsers ?? []).map((u: any) => (
                 <tr key={u.id} className="border-b last:border-0">
                   <td className="py-2">{u.name}</td>
                   <td className="py-2 text-gray-500 text-xs">{u.email}</td>
-                  <td className="py-2 text-gray-500">{u.createdAt.toLocaleDateString("ko-KR")}</td>
+                  <td className="py-2 text-gray-500">{new Date(u.createdAt).toLocaleDateString("ko-KR")}</td>
                 </tr>
               ))}
-              {recentUsers.length === 0 && (
+              {(recentUsers ?? []).length === 0 && (
                 <tr>
                   <td colSpan={3} className="py-4 text-center text-gray-400 text-xs">
                     가입 회원 없음
@@ -92,16 +82,16 @@ export default async function AdminPage() {
               </tr>
             </thead>
             <tbody>
-              {recentCerts.map((c) => (
+              {(recentCerts ?? []).map((c: any) => (
                 <tr key={c.id} className="border-b last:border-0">
-                  <td className="py-2">{c.result.user.name}</td>
+                  <td className="py-2">{c.result?.user?.name}</td>
                   <td className="py-2 text-gray-500 text-xs truncate max-w-[100px]">
-                    {c.result.exam.title}
+                    {c.result?.exam?.title}
                   </td>
-                  <td className="py-2 text-gray-500">{c.issueDate.toLocaleDateString("ko-KR")}</td>
+                  <td className="py-2 text-gray-500">{new Date(c.issueDate).toLocaleDateString("ko-KR")}</td>
                 </tr>
               ))}
-              {recentCerts.length === 0 && (
+              {(recentCerts ?? []).length === 0 && (
                 <tr>
                   <td colSpan={3} className="py-4 text-center text-gray-400 text-xs">
                     발급 자격증 없음

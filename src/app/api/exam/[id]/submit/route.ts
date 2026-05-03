@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 
@@ -13,36 +13,35 @@ export async function POST(
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
-    });
+    const { data: user } = await supabaseAdmin
+      .from("User")
+      .select("*")
+      .eq("email", session.user.email)
+      .single();
 
     if (!user) {
       return new NextResponse("User not found", { status: 404 });
     }
 
-    const { id } = await params;
-    const examId = id;
-    
+    const { id: examId } = await params;
     const body = await request.json();
-    const { answers } = body; // Record<string, string>
+    const { answers } = body;
 
-    const exam = await prisma.exam.findUnique({
-      where: { id: examId },
-      include: { questions: true }
-    });
+    const { data: exam } = await supabaseAdmin
+      .from("Exam")
+      .select("*, questions:Question(*)")
+      .eq("id", examId)
+      .single();
 
     if (!exam) {
       return new NextResponse("Exam not found", { status: 404 });
     }
 
-    // 채점 로직
     let correctCount = 0;
     const totalQuestions = exam.questions.length;
 
-    exam.questions.forEach((q) => {
-      const userAnswer = answers[q.id];
-      if (userAnswer === q.correctAnswer) {
+    exam.questions.forEach((q: any) => {
+      if (answers[q.id] === q.correctAnswer) {
         correctCount++;
       }
     });
@@ -50,27 +49,31 @@ export async function POST(
     const score = Math.round((correctCount / totalQuestions) * 100);
     const passed = score >= exam.passingScore;
 
-    // Result 생성
-    const result = await prisma.result.create({
-      data: {
-        userId: user.id,
-        examId: exam.id,
-        score,
-        passed,
-      }
+    const resultId = crypto.randomUUID();
+    const { error: resultError } = await supabaseAdmin.from("Result").insert({
+      id: resultId,
+      userId: user.id,
+      examId: exam.id,
+      score,
+      passed,
+      createdAt: new Date().toISOString(),
     });
 
-    // 합격했다면 수료증 발급
-    if (passed) {
-      // 고유 번호 생성 로직: 0101부터 순차적 증가
-      const count = await prisma.certificate.count();
-      const certificateNumber = String(101 + count).padStart(4, '0');
+    if (resultError) throw resultError;
 
-      await prisma.certificate.create({
-        data: {
-          resultId: result.id,
-          certificateNumber,
-        }
+    if (passed) {
+      const { count } = await supabaseAdmin
+        .from("Certificate")
+        .select("id", { count: "exact", head: true });
+
+      const certificateNumber = String(101 + (count ?? 0)).padStart(4, "0");
+
+      await supabaseAdmin.from("Certificate").insert({
+        id: crypto.randomUUID(),
+        resultId,
+        certificateNumber,
+        issueDate: new Date().toISOString(),
+        pdfUrl: null,
       });
     }
 

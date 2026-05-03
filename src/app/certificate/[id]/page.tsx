@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import { redirect } from "next/navigation";
@@ -18,19 +18,13 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
   const { id } = await params;
   const userRole = (session.user as any).role;
 
-  const certificate = await prisma.certificate.findUnique({
-    where: { id },
-    include: {
-      result: {
-        include: {
-          exam: true,
-          user: true,
-        },
-      },
-    },
-  });
+  const { data: certificate } = await supabaseAdmin
+    .from("Certificate")
+    .select("*, result:Result(*, exam:Exam(*), user:User(*))")
+    .eq("id", id)
+    .single();
 
-  const isOwner = certificate?.result.user.email === session.user.email;
+  const isOwner = certificate?.result?.user?.email === session.user.email;
   const isAdmin = userRole === "ADMIN";
 
   if (!certificate || (!isOwner && !isAdmin)) {
@@ -84,7 +78,7 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
           </div>
 
           <div className="absolute top-[41.5%] left-[45%] text-black text-lg md:text-xl font-serif tracking-widest font-medium">
-            {certificate.result.user.name}
+            {certificate.result?.user?.name}
           </div>
 
           <div className="absolute top-[44.8%] left-[45%] text-black text-lg md:text-xl font-serif tracking-widest font-medium">

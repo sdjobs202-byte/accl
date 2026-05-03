@@ -1,15 +1,12 @@
-import { prisma } from "@/lib/prisma";
+import { supabaseAdmin } from "@/lib/supabase";
 import Link from "next/link";
 import ExamActions from "./ExamActions";
 
 export default async function ExamsPage() {
-  const exams = await prisma.exam.findMany({
-    orderBy: { createdAt: "desc" },
-    include: {
-      _count: { select: { questions: true, results: true } },
-      results: { select: { passed: true } },
-    },
-  });
+  const { data: exams } = await supabaseAdmin
+    .from("Exam")
+    .select("*, questions:Question(id), results:Result(id, passed)")
+    .order("createdAt", { ascending: false });
 
   return (
     <div>
@@ -37,11 +34,11 @@ export default async function ExamsPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {exams.map((exam) => {
+            {(exams ?? []).map((exam: any) => {
               const passRate =
                 exam.results.length > 0
                   ? Math.round(
-                      (exam.results.filter((r) => r.passed).length / exam.results.length) * 100
+                      (exam.results.filter((r: any) => r.passed).length / exam.results.length) * 100
                     )
                   : null;
               return (
@@ -49,12 +46,12 @@ export default async function ExamsPage() {
                   <td className="px-4 py-3 font-medium">{exam.title}</td>
                   <td className="px-4 py-3 text-gray-500">
                     {exam.examDate
-                      ? exam.examDate.toLocaleDateString("ko-KR")
+                      ? new Date(exam.examDate).toLocaleDateString("ko-KR")
                       : "미설정"}
                   </td>
-                  <td className="px-4 py-3 text-center">{exam._count.questions}문항</td>
+                  <td className="px-4 py-3 text-center">{exam.questions.length}문항</td>
                   <td className="px-4 py-3 text-center">{exam.passingScore}점</td>
-                  <td className="px-4 py-3 text-center">{exam._count.results}명</td>
+                  <td className="px-4 py-3 text-center">{exam.results.length}명</td>
                   <td className="px-4 py-3 text-center">
                     {passRate !== null ? (
                       <span
@@ -76,7 +73,7 @@ export default async function ExamsPage() {
                 </tr>
               );
             })}
-            {exams.length === 0 && (
+            {(exams ?? []).length === 0 && (
               <tr>
                 <td colSpan={7} className="px-4 py-8 text-center text-gray-400">
                   등록된 시험이 없습니다. 시험을 추가해주세요.
