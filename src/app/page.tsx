@@ -35,28 +35,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Challenges Section */}
+      {/* About Section */}
       <section id="about" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">어떤 어려움을 겪고 계신가요?</h2>
-            <div className="w-24 h-1 bg-[#A92B2B] mx-auto rounded-full"></div>
+          <div className="mb-16 max-w-4xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
+              <span className="text-gray-900">AI 시대</span>{" "}
+              <span className="text-[#A92B2B]">혁신 전문가 그룹, ACCL</span>
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              ACCL(AI Career Contents LAB)은 AI 시대에 필요한 실질적인 역량을 개발하고 전파하는 전문가 그룹입니다.<br className="hidden md:block" />
+              급변하는 디지털 환경에서 개인과 조직이 효과적으로 적응하고 성장할 수 있도록 체계적인 교육과 실용적인 콘텐츠를 제공합니다.
+            </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { title: "비효율적인 반복 업무", desc: "매일 똑같이 반복되는 서류 작업과 데이터 정리에 지치셨나요?" },
-              { title: "빠른 기술 변화에 대한 불안", desc: "쏟아지는 AI 기술, 어디서부터 어떻게 시작해야 할지 막막하신가요?" },
-              { title: "실무 적용의 한계", desc: "이론은 배웠지만, 내 업무에 직접 적용하기가 어려우신가요?" }
-            ].map((item, i) => (
-              <div key={i} className="bg-[#F9FAFB] p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow duration-300">
-                <div className="w-12 h-12 bg-[#A92B2B]/10 rounded-full flex items-center justify-center mb-6">
-                  <CheckCircle2 className="text-[#A92B2B] w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16">
+            {/* About ACCL — dark circle */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">ACCL 소개</h3>
+              <div className="relative w-full max-w-[420px] aspect-square rounded-full bg-[#1A1F2E] text-white flex flex-col items-center justify-center px-8 shadow-xl">
+                <p className="text-lg md:text-xl font-bold mb-6">About ACCL</p>
+                <ul className="space-y-3 text-sm md:text-base text-center">
+                  <li>AI 기술을 활용한 업무 혁신 전문가 그룹</li>
+                  <li>실무 경험을 바탕으로 한 현장 중심 접근</li>
+                  <li>이론과 실무를 연결하는 교육 콘텐츠 개발</li>
+                  <li>AI와 디지털 전환 시대의 핵심 역량 전수</li>
+                  <li>단계별 맞춤형 교육 제공</li>
+                </ul>
               </div>
-            ))}
+            </div>
+
+            {/* Mission & Vision — red circle */}
+            <div className="flex flex-col items-center">
+              <h3 className="text-xl md:text-2xl font-bold text-[#A92B2B] mb-6">Mission &amp; Vision</h3>
+              <div className="relative w-full max-w-[420px] aspect-square rounded-full bg-[#A92B2B] text-white flex flex-col items-center justify-center px-8 shadow-xl">
+                <p className="text-lg md:text-xl font-bold mb-6">우리가 그리는 미래</p>
+                <ul className="space-y-3 text-sm md:text-base text-center">
+                  <li>AI 활용 업무 생산성 향상</li>
+                  <li>고품질 콘텐츠 신속 개발 및 제공</li>
+                  <li>실질적인 AI 활용 방법론 제시</li>
+                  <li>디지털 격차 해소를 통한 포용적 성장</li>
+                  <li>AI 시대의 새로운 커리어 패스 개척</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -89,7 +111,7 @@ export default function Home() {
                 </div>
               );
               const text = (
-                <div className={side === "left" ? "text-left pr-2" : "text-right pl-2"}>
+                <div className={`flex-1 ${side === "left" ? "text-left pr-2" : "text-right pl-2"}`}>
                   <h4 className="text-xl md:text-2xl font-extrabold text-[#A92B2B] mb-1">{title}</h4>
                   <p className="text-sm text-gray-700 leading-snug">{line1}</p>
                   <p className="text-sm text-gray-700 leading-snug">{line2}</p>
