@@ -11,7 +11,7 @@ export default function TermsPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <header className="border-b border-gray-200 pb-8 mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-3">이용약관</h1>
-          <p className="text-sm text-gray-500">시행일: 2026년 5월 3일</p>
+          <p className="text-sm text-gray-500">시행일: 2026년 3월 2일</p>
         </header>
 
         <div className="prose prose-gray max-w-none space-y-10 text-gray-700 leading-relaxed">
@@ -115,7 +115,7 @@ export default function TermsPage() {
 
           <section className="border-t border-gray-200 pt-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">부칙</h2>
-            <p>본 약관은 2026년 5월 3일부터 시행됩니다.</p>
+            <p>본 약관은 2026년 3월 2일부터 시행됩니다.</p>
           </section>
         </div>
       </div>
