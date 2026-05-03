@@ -116,8 +116,17 @@ export default async function RootLayout({
               <div>
                 <h3 className="text-white font-semibold mb-4">Contact</h3>
                 <ul className="space-y-2 text-sm">
-                  <li>이메일: contact@accl.kr</li>
-                  <li>주소: 서울특별시 ACCL 센터</li>
+                  <li>
+                    <a
+                      href="https://open.kakao.com/o/sywGHfti"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-white transition-colors"
+                    >
+                      카카오톡 1:1 오픈채팅
+                    </a>
+                  </li>
+                  <li className="text-gray-500 text-xs break-all">open.kakao.com/o/sywGHfti</li>
                 </ul>
               </div>
             </div>
