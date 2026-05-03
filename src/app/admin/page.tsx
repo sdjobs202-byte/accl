@@ -7,6 +7,7 @@ export default async function AdminPage() {
     { count: totalExams },
     { count: totalResults },
     { count: totalCerts },
+    { count: newInquiries },
     { data: recentUsers },
     { data: recentCerts },
   ] = await Promise.all([
@@ -14,6 +15,7 @@ export default async function AdminPage() {
     supabaseAdmin.from("Exam").select("id", { count: "exact", head: true }),
     supabaseAdmin.from("Result").select("id", { count: "exact", head: true }),
     supabaseAdmin.from("Certificate").select("id", { count: "exact", head: true }),
+    supabaseAdmin.from("Inquiry").select("id", { count: "exact", head: true }).eq("status", "NEW"),
     supabaseAdmin.from("User").select("id, name, email, createdAt").eq("role", "USER").order("createdAt", { ascending: false }).limit(5),
     supabaseAdmin.from("Certificate").select("id, issueDate, result:Result(user:User(name), exam:Exam(title))").order("issueDate", { ascending: false }).limit(5),
   ]);
@@ -22,12 +24,13 @@ export default async function AdminPage() {
     <div>
       <h1 className="text-2xl font-bold text-gray-900 mb-6">대시보드</h1>
 
-      <div className="grid grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-5 gap-4 mb-8">
         {[
           { label: "전체 회원", value: totalUsers ?? 0, href: "/admin/members" },
           { label: "시험 종류", value: totalExams ?? 0, href: "/admin/exams" },
           { label: "총 응시 횟수", value: totalResults ?? 0, href: null },
           { label: "발급 자격증", value: totalCerts ?? 0, href: "/admin/certificates" },
+          { label: "신규 문의", value: newInquiries ?? 0, href: "/admin/inquiries" },
         ].map(({ label, value, href }) => (
           <div key={label} className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
             <p className="text-sm text-gray-500">{label}</p>

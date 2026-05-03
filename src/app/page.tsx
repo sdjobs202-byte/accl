@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, BookOpen, BrainCircuit, Users, Settings, Award, GraduationCap, Target } from "lucide-react";
+import ContactForm from "./ContactForm";
 
 export default function Home() {
   return (
@@ -297,27 +298,25 @@ export default function Home() {
             <div className="grid md:grid-cols-2">
               <div className="p-12 bg-[#A92B2B] text-white">
                 <h2 className="text-3xl font-bold mb-4">궁금한 점이 있으신가요?</h2>
-                <p className="text-white/80">
+                <p className="text-white/80 mb-8">
                   교육 과정, 자격증, 단체 수강 등 무엇이든 물어보세요.<br />
-                  카카오톡 1:1 오픈채팅으로 빠르게 답변드립니다.
+                  관리자가 확인 후 이메일로 답변드립니다.
+                </p>
+                <p className="text-xs text-white/70">
+                  급하시면{" "}
+                  <a
+                    href="https://open.kakao.com/o/sywGHfti"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-2 hover:text-white"
+                  >
+                    카카오톡 1:1 오픈채팅
+                  </a>
+                  으로 연락 주세요.
                 </p>
               </div>
-              <div className="p-12 flex flex-col justify-center">
-                <p className="text-sm text-gray-500 mb-6">
-                  아래 버튼을 누르면 카카오톡 1:1 오픈채팅방으로 연결됩니다.
-                </p>
-                <a
-                  href="https://open.kakao.com/o/sywGHfti"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full bg-[#FEE500] text-[#191600] font-bold py-4 rounded-lg hover:brightness-95 transition"
-                >
-                  <span aria-hidden>💬</span>
-                  카카오톡으로 문의하기
-                </a>
-                <p className="text-xs text-gray-400 mt-4 break-all">
-                  open.kakao.com/o/sywGHfti
-                </p>
+              <div className="p-12">
+                <ContactForm />
               </div>
             </div>
           </div>
