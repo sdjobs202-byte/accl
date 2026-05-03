@@ -9,8 +9,21 @@ import { authOptions } from "@/lib/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
   title: "ACCL - AI 학습 및 자격증 센터",
   description: "AI 시대, 당신의 성장을 돕는 ACCL",
+  openGraph: {
+    title: "ACCL - AI 학습 및 자격증 센터",
+    description: "AI 시대, 당신의 성장을 돕는 ACCL",
+    siteName: "ACCL",
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ACCL - AI 학습 및 자격증 센터",
+    description: "AI 시대, 당신의 성장을 돕는 ACCL",
+  },
 };
 
 export default async function RootLayout({
