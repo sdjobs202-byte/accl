@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <header className="border-b border-gray-200 pb-8 mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-3">개인정보처리방침</h1>
-          <p className="text-sm text-gray-500">시행일: 2026년 5월 3일</p>
+          <p className="text-sm text-gray-500">시행일: 2026년 3월 2일</p>
         </header>
 
         <div className="prose prose-gray max-w-none space-y-10 text-gray-700 leading-relaxed">
@@ -143,7 +143,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">제9조 (개인정보 보호책임자)</h2>
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <p className="mb-2"><span className="font-semibold">성명:</span> ACCL 개인정보 보호책임자</p>
-              <p className="mb-2"><span className="font-semibold">이메일:</span> contact@accl.kr</p>
+              <p className="mb-2"><span className="font-semibold">이메일:</span> sdjobs202@gmail.com</p>
               <p className="text-sm text-gray-500 mt-3">
                 정보주체는 개인정보 처리에 관한 문의·불만처리·피해구제 등에 관한 사항을 위 연락처로 문의하실 수 있습니다.
               </p>
@@ -163,7 +163,7 @@ export default function PrivacyPage() {
 
           <section className="border-t border-gray-200 pt-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">부칙</h2>
-            <p>본 개인정보처리방침은 2026년 5월 3일부터 적용됩니다.</p>
+            <p>본 개인정보처리방침은 2026년 3월 2일부터 적용됩니다.</p>
           </section>
         </div>
       </div>
