@@ -108,12 +108,16 @@ export default function Home() {
                   {items.map((it) => <Card key={it.title} {...it} />)}
                 </div>
 
-                {/* Center circular photo (overlay on md+).
-                    To use a real photo, drop a square image at /public/img/center-photo.jpg
-                    and replace the inner block with a <CenterPhoto /> using next/image. */}
+                {/* Center circular photo (overlay on md+) */}
                 <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  <div className="w-44 h-44 lg:w-52 lg:h-52 rounded-full border-4 border-white shadow-xl bg-gradient-to-br from-[#A92B2B]/20 via-white to-[#A92B2B]/10 flex items-center justify-center">
-                    <Users className="w-20 h-20 text-[#A92B2B]/60" strokeWidth={1.4} />
+                  <div className="relative w-44 h-44 lg:w-52 lg:h-52 rounded-full overflow-hidden border-4 border-white shadow-xl bg-white">
+                    <Image
+                      src="/img/center-photo.jpg"
+                      alt="ACCL 4대 핵심 콘텐츠 영역"
+                      fill
+                      sizes="(min-width:1024px) 208px, 176px"
+                      className="object-cover"
+                    />
                   </div>
                 </div>
               </div>
