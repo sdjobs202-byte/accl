@@ -7,7 +7,7 @@ import { UserPlus } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
-  const [data, setData] = useState({ name: "", email: "", password: "" });
+  const [data, setData] = useState({ name: "", birthDate: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -72,6 +72,17 @@ export default function RegisterPage() {
                 value={data.name}
                 onChange={(e) => setData({ ...data, name: e.target.value })}
               />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">생년월일</label>
+              <input
+                type="date"
+                required
+                className="appearance-none rounded-lg relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent sm:text-sm"
+                value={data.birthDate}
+                onChange={(e) => setData({ ...data, birthDate: e.target.value })}
+              />
+              <p className="mt-2 text-xs text-gray-500">자격증에 표기됩니다.</p>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">이메일 주소</label>

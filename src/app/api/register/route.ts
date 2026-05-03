@@ -5,10 +5,14 @@ import { supabaseAdmin } from "@/lib/supabase";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { email, name, password } = body;
+    const { email, name, password, birthDate } = body;
 
-    if (!email || !name || !password) {
+    if (!email || !name || !password || !birthDate) {
       return new NextResponse("모든 정보를 입력해주세요.", { status: 400 });
+    }
+
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(birthDate)) {
+      return new NextResponse("생년월일 형식이 올바르지 않습니다.", { status: 400 });
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
@@ -34,6 +38,7 @@ export async function POST(request: Request) {
         id: crypto.randomUUID(),
         email,
         name,
+        birthDate,
         password: hashedPassword,
         role: "USER",
         createdAt: new Date().toISOString(),

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, BookOpen, BrainCircuit, Users } from "lucide-react";
+import { ArrowRight, CheckCircle2, BookOpen, BrainCircuit, Users, Settings, Award, GraduationCap, Target } from "lucide-react";
+import ContactForm from "./ContactForm";
 
 export default function Home() {
   return (
@@ -63,52 +64,61 @@ export default function Home() {
       {/* Core Contents Section */}
       <section id="ai-contents" className="py-24 bg-[#F9FAFB]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-16 items-center">
-            <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                업무의 <span className="text-[#A92B2B]">혁신</span>,<br />ACCL에서 시작됩니다.
-              </h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                단순한 툴 사용법을 넘어, AI를 실무에 완벽히 적용할 수 있는 체계적인 커리큘럼을 제공합니다. 
-                전문가의 1:1 피드백과 함께 진짜 '나만의 무기'를 만들어보세요.
-              </p>
-              
-              <ul className="space-y-4">
-                {[
-                  "현업 전문가의 실전 중심 강의",
-                  "내 업무에 바로 적용하는 맞춤형 프로젝트",
-                  "자격증 취득으로 전문성 입증",
-                ].map((text, i) => (
-                  <li key={i} className="flex items-center text-gray-800 font-medium">
-                    <CheckCircle2 className="w-5 h-5 text-[#A92B2B] mr-3" />
-                    {text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="md:w-1/2 w-full grid grid-cols-2 gap-4">
-              <div className="space-y-4 mt-8">
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <BrainCircuit className="w-10 h-10 text-[#A92B2B] mb-4" />
-                  <h4 className="font-bold text-gray-900">AI 리터러시</h4>
-                  <p className="text-sm text-gray-500 mt-2">AI의 기본 개념과 활용법 마스터</p>
-                </div>
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                  <BookOpen className="w-10 h-10 text-[#A92B2B] mb-4" />
-                  <h4 className="font-bold text-gray-900">자격증 과정</h4>
-                  <p className="text-sm text-gray-500 mt-2">민간자격증 취득을 통한 커리어 업</p>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="bg-[#A92B2B] p-6 rounded-2xl shadow-md text-white">
-                  <Users className="w-10 h-10 text-white/80 mb-4" />
-                  <h4 className="font-bold">기업 맞춤형 교육</h4>
-                  <p className="text-sm text-white/80 mt-2">조직의 생산성 극대화를 위한 워크샵</p>
-                </div>
-              </div>
-            </div>
+          <div className="mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+              <span className="text-[#A92B2B]">4대</span> 핵심 콘텐츠 영역
+            </h2>
+            <p className="text-lg text-gray-600 leading-relaxed">
+              ACCL은 AI 활용 능력 향상을 위한 4가지 핵심 콘텐츠 영역을 제공합니다.<br className="hidden md:block" />
+              각 영역은 대상과 목표에 맞춰 특화된 교육을 제공합니다.
+            </p>
           </div>
+
+          {(() => {
+            const items = [
+              { side: "left",  title: "AI 리터러시", line1: "일반인 대상 기초 교육",         line2: "AI와 친해지는 가장 쉬운 첫걸음", Icon: Settings },
+              { side: "right", title: "AI 워커스",   line1: "직장인 업무 생산성 향상",       line2: "퇴근 시간을 앞당기는 AI 일잘러", Icon: Award },
+              { side: "left",  title: "AI 커리어",   line1: "취업준비생 경쟁력 강화",         line2: "AI 시대, 급변하는 채용 전략 수립", Icon: GraduationCap },
+              { side: "right", title: "AI 티처스",   line1: "전문 강사 양성 과정",           line2: "고퀄리티 강사로 빠르게 브랜딩",   Icon: Target },
+            ] as const;
+
+            const Card = ({ side, title, line1, line2, Icon }: typeof items[number]) => {
+              const iconCircle = (
+                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#A92B2B] flex items-center justify-center shadow-md">
+                  <Icon className="w-8 h-8 md:w-10 md:h-10 text-white" strokeWidth={1.8} />
+                </div>
+              );
+              const text = (
+                <div className={side === "left" ? "text-left pr-2" : "text-right pl-2"}>
+                  <h4 className="text-xl md:text-2xl font-extrabold text-[#A92B2B] mb-1">{title}</h4>
+                  <p className="text-sm text-gray-700 leading-snug">{line1}</p>
+                  <p className="text-sm text-gray-700 leading-snug">{line2}</p>
+                </div>
+              );
+              return (
+                <div className="bg-white rounded-full px-5 py-4 md:px-6 md:py-5 border border-[#A92B2B]/20 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
+                  {side === "left" ? <>{iconCircle}{text}</> : <>{text}{iconCircle}</>}
+                </div>
+              );
+            };
+
+            return (
+              <div className="relative">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-56 md:gap-y-10">
+                  {items.map((it) => <Card key={it.title} {...it} />)}
+                </div>
+
+                {/* Center circular photo (overlay on md+).
+                    To use a real photo, drop a square image at /public/img/center-photo.jpg
+                    and replace the inner block with a <CenterPhoto /> using next/image. */}
+                <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+                  <div className="w-44 h-44 lg:w-52 lg:h-52 rounded-full border-4 border-white shadow-xl bg-gradient-to-br from-[#A92B2B]/20 via-white to-[#A92B2B]/10 flex items-center justify-center">
+                    <Users className="w-20 h-20 text-[#A92B2B]/60" strokeWidth={1.4} />
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
@@ -297,23 +307,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-12">
-                <form className="space-y-4" action="#">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">이름</label>
-                    <input type="text" className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="홍길동" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">이메일</label>
-                    <input type="email" className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="example@email.com" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">문의 내용</label>
-                    <textarea rows={4} className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#A92B2B] focus:border-transparent outline-none" placeholder="문의하실 내용을 입력해주세요."></textarea>
-                  </div>
-                  <button type="button" className="w-full bg-gray-900 text-white font-bold py-3 rounded-lg hover:bg-gray-800 transition-colors">
-                    문의 남기기
-                  </button>
-                </form>
+                <ContactForm />
               </div>
             </div>
           </div>

@@ -82,7 +82,12 @@ export default async function CertificatePage({ params }: { params: Promise<{ id
           </div>
 
           <div className="absolute top-[44.8%] left-[45%] text-black text-lg md:text-xl font-serif tracking-widest font-medium">
-            77.77.77
+            {(() => {
+              const bd = certificate.result?.user?.birthDate;
+              if (!bd) return "";
+              const m = String(bd).match(/^(\d{4})-(\d{2})-(\d{2})/);
+              return m ? `${m[1].slice(2)}.${m[2]}.${m[3]}` : "";
+            })()}
           </div>
         </div>
       </div>

@@ -55,6 +55,19 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.role = user.role;
         token.id = user.id;
+        return token;
+      }
+
+      if (token.email) {
+        const { data: latest } = await supabaseAdmin
+          .from("User")
+          .select("id, role")
+          .eq("email", token.email)
+          .single();
+        if (latest) {
+          token.id = latest.id;
+          token.role = latest.role;
+        }
       }
       return token;
     },

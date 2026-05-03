@@ -5,7 +5,8 @@ import Link from "next/link";
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
-  if (!session || (session.user as any).role !== "ADMIN") redirect("/login");
+  if (!session) redirect("/login");
+  if ((session.user as any).role !== "ADMIN") redirect("/dashboard");
 
   return (
     <div className="flex min-h-screen">
