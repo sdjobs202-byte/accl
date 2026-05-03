@@ -109,7 +109,6 @@ export default async function RootLayout({
                 <ul className="space-y-2 text-sm">
                   <li><Link href="/#about" className="hover:text-white transition-colors">About</Link></li>
                   <li><Link href="/#ai-contents" className="hover:text-white transition-colors">AI Contents</Link></li>
-                  <li><Link href="/exam" className="hover:text-white transition-colors">자격증 테스트</Link></li>
                 </ul>
               </div>
               <div>
