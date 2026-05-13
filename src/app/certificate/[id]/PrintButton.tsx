@@ -47,12 +47,6 @@ export default function PrintButton({
       >
         {busy ? "PDF 생성 중..." : "PDF 다운로드"}
       </button>
-      <button
-        className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-lg font-bold transition-colors"
-        onClick={() => window.print()}
-      >
-        인쇄하기
-      </button>
     </div>
   );
 }
