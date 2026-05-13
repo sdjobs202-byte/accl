@@ -353,9 +353,6 @@ export default function Home() {
           <p className="text-xl text-gray-400 mb-10">
             간단한 테스트부터 공식 민간자격증까지. 지금 바로 여러분의 실력을 점검하고 수료증을 발급받으세요.
           </p>
-          <Link href="/exam" className="inline-flex items-center bg-white text-[#1A1A1A] hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300">
-            자격증 테스트 시작하기 <ArrowRight className="ml-2 w-5 h-5" />
-          </Link>
         </div>
       </section>
 
