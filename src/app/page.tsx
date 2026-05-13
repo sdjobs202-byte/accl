@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* Press & Articles Section */}
-      <section className="py-20 bg-[#F3F4F6]">
+      {false && <section className="py-20 bg-[#F3F4F6]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-10">
             <div>
@@ -313,7 +313,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+      </section>}
       {/* Contact Section */}
       <section id="contact" className="py-24 bg-[#F9FAFB]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
