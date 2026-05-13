@@ -351,7 +351,7 @@ export default function Home() {
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">자신의 AI 역량을 증명하세요</h2>
           <p className="text-xl text-gray-400 mb-10">
-            간단한 테스트부터 공식 민간자격증까지. 지금 바로 여러분의 실력을 점검하고 수료증을 발급받으세요.
+            AI Literacy Master Certificate, AIMC 1 & 2급, AITC 강사 자격까지. <br />지금 바로 여러분의 실력을 점검하고 과학기술정통부 등록 자격을 발급받으세요!
           </p>
         </div>
       </section>

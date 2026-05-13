@@ -101,7 +101,7 @@ export default async function RootLayout({
               <div className="col-span-1 md:col-span-2">
                 <h2 className="text-2xl font-bold tracking-tighter text-white mb-4">ACCL.</h2>
                 <p className="text-sm text-gray-400 max-w-md">
-                  AI 시대, 새로운 기술의 막막함을 해소하고 여러분의 성장을 돕는 최적의 파트너가 되겠습니다.
+                  AI 시대, 새로운 기술의 막막함을 해소하고,<br />여러분의 성장을 돕는 최적의 파트너가 되겠습니다.
                 </p>
               </div>
               <div>
