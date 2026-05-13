@@ -28,9 +28,6 @@ export default function Home() {
             <Link href="#ai-contents" className="bg-[#A92B2B] hover:bg-[#8e2323] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
               ACCL 알아보기 <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
-            <Link href="/exam" className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 backdrop-blur-sm flex items-center justify-center">
-              자격증 시험 응시하기
-            </Link>
           </div>
         </div>
       </section>
