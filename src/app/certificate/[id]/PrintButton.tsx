@@ -12,6 +12,11 @@ export default function PrintButton({
   const [busy, setBusy] = useState(false);
 
   const handleDownload = async () => {
+    if (pdfUrl) {
+      window.open(pdfUrl, "_blank", "noopener,noreferrer");
+      return;
+    }
+
     setBusy(true);
     try {
       const [{ default: html2canvas }, { default: jsPDF }] = await Promise.all([
