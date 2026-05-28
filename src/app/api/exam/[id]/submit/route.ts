@@ -104,7 +104,14 @@ export async function POST(
       }
     }
 
-    return NextResponse.json({ score, passed, certificateId });
+    return NextResponse.json({
+      score,
+      passed,
+      certificateId,
+      totalQuestions,
+      correctCount,
+      passingScore: exam.passingScore,
+    });
   } catch (error: any) {
     console.error("SUBMIT EXAM ERROR:", error);
     return new NextResponse("Internal Server Error", { status: 500 });
