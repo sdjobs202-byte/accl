@@ -42,6 +42,7 @@ export default async function ExamPage({ params }: { params: Promise<{ id: strin
     id: exam.id,
     title: exam.title,
     description: exam.description,
+    passingScore: exam.passingScore,
     questions: sanitizedQuestions,
   };
 
