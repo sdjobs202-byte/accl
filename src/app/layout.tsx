@@ -9,7 +9,7 @@ import { authOptions } from "@/lib/auth";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.accl.kr"),
   title: "ACCL - AI 학습 및 자격증 센터",
   description: "AI 시대, 당신의 성장을 돕는 ACCL",
   openGraph: {
