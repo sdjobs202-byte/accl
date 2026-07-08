@@ -28,6 +28,9 @@ export default function Home() {
             <Link href="#ai-contents" className="bg-[#A92B2B] hover:bg-[#8e2323] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
               ACCL 알아보기 <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
+            <Link href="/certifications" className="bg-white hover:bg-gray-100 text-[#A92B2B] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center">
+              자격관리센터 <Award className="ml-2 w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -353,6 +356,9 @@ export default function Home() {
           <p className="text-xl text-gray-400 mb-10">
             AI Literacy Master Certificate, AIMC 1 & 2급, AITC 강사 자격까지. <br />지금 바로 여러분의 실력을 점검하고 과학기술정통부 등록 자격을 발급받으세요!
           </p>
+          <Link href="/certifications" className="inline-flex items-center gap-2 bg-[#A92B2B] hover:bg-[#8e2323] text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105">
+            자격관리센터 바로가기 <ArrowRight className="w-5 h-5" />
+          </Link>
         </div>
       </section>
 

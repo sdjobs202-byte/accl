@@ -53,6 +53,7 @@ export default async function RootLayout({
                 <Link href="/#ai-contents" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">AI Contents</Link>
                 <Link href="/#reference" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">Reference</Link>
                 <Link href="/#contact" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">Contact</Link>
+                <Link href="/certifications" className="text-[#A92B2B] hover:text-[#8e2323] font-semibold transition-colors">자격관리센터</Link>
                 <Link href="/#contact" className="bg-[#A92B2B] text-white px-5 py-2.5 rounded-full font-medium hover:bg-[#8e2323] transition-colors">
                   문의하기
                 </Link>
