@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { Award, BookOpen, Clock, PlayCircle, CheckCircle } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabase";
+import SeedExamsButton from "./SeedExamsButton";
 
 export const dynamic = "force-dynamic";
 
@@ -48,11 +49,7 @@ export default async function DashboardPage() {
             <p className="text-gray-600">ACCL과 함께 당신의 AI 역량을 증명해 보세요.</p>
           </div>
           <div className="mt-6 md:mt-0 flex gap-4">
-            {user.role === "ADMIN" && (
-              <Link href="/api/admin/seed-exam" className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-bold transition-colors">
-                [관리자] 시험 데이터 초기화
-              </Link>
-            )}
+            {user.role === "ADMIN" && <SeedExamsButton />}
             {user.role === "ADMIN" && (
               <Link href="/admin" className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold transition-colors">
                 관리자 페이지로 이동
