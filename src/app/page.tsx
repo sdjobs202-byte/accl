@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, BookOpen, BrainCircuit, Users, Settings, Award, GraduationCap, Target } from "lucide-react";
 import ContactForm from "./ContactForm";
-import HeroAurora from "@/components/HeroAurora";
+import HeroConstellation from "@/components/HeroConstellation";
+import HeroSpace from "@/components/HeroSpace";
 
 export default function Home() {
   return (
@@ -10,8 +11,8 @@ export default function Home() {
       
       {/* Hero Section */}
       <section className="relative bg-[#141414] text-white py-32 overflow-hidden">
-        {/* Animated motion-graphic background */}
-        <HeroAurora />
+        {/* 성좌 모션 배경 */}
+        <HeroConstellation />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center text-center">
           <span className="inline-block py-1 px-3 rounded-full bg-[#A92B2B]/20 text-[#ff8080] text-sm font-semibold mb-6 border border-[#A92B2B]/30">
@@ -351,7 +352,7 @@ export default function Home() {
 
       {/* Exam Banner CTA */}
       <section className="py-20 bg-[#141414] relative overflow-hidden text-center">
-        <HeroAurora />
+        <HeroSpace />
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">자신의 AI 역량을 증명하세요</h2>
           <p className="text-xl text-gray-400 mb-10">

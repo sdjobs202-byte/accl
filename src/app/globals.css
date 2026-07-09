@@ -29,9 +29,10 @@ body {
 }
 
 /* ============================================================
-   Hero motion background (hero-fx)
-   순검정 히어로 대신 은은히 움직이는 오로라 + 3D 원근 그리드 + 미세 입자.
-   transform/opacity 기반이라 컴포지터 친화적(가벼움). JS 없음.
+   Hero background — 우주/성좌 (별점 + 연결선, Obsidian 그래프뷰 느낌)
+   .hero-fx__space : 정적 딥스페이스 그라디언트(네뷸라)
+   .hero-fx__canvas: 파티클 성좌 (HeroConstellation, JS canvas)
+   .hero-fx__vignette: 가장자리 암전 → 가운데 글씨 가독성
    ============================================================ */
 .hero-fx {
   position: absolute;
@@ -40,98 +41,23 @@ body {
   pointer-events: none;
   z-index: 0;
 }
-.hero-fx__base {
+.hero-fx__space {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(120% 90% at 15% 0%, #241318 0%, transparent 55%),
-    radial-gradient(120% 90% at 85% 100%, #1e1220 0%, transparent 55%),
-    linear-gradient(135deg, #1b1113 0%, #141414 45%, #17101a 100%);
+    radial-gradient(85% 65% at 18% 12%, rgba(120, 48, 62, 0.28) 0%, transparent 58%),
+    radial-gradient(75% 65% at 85% 88%, rgba(70, 52, 110, 0.26) 0%, transparent 58%),
+    radial-gradient(130% 120% at 50% 38%, #17121a 0%, #100c11 55%, #0a090b 100%);
 }
-.hero-fx__orb {
-  position: absolute;
-  border-radius: 9999px;
-  filter: blur(70px);
-  mix-blend-mode: screen;
-  will-change: transform;
-}
-.hero-fx__orb--1 {
-  width: 42rem; height: 42rem; top: -12rem; right: -8rem;
-  background: radial-gradient(circle, #c0392b 0%, transparent 62%);
-  opacity: 0.55;
-  animation: heroDrift1 22s ease-in-out infinite;
-}
-.hero-fx__orb--2 {
-  width: 40rem; height: 40rem; bottom: -14rem; left: -10rem;
-  background: radial-gradient(circle, #8e2323 0%, transparent 62%);
-  opacity: 0.5;
-  animation: heroDrift2 28s ease-in-out infinite;
-}
-.hero-fx__orb--3 {
-  width: 30rem; height: 30rem; top: 18%; left: 42%;
-  background: radial-gradient(circle, #e2673b 0%, transparent 62%);
-  opacity: 0.32;
-  animation: heroDrift3 34s ease-in-out infinite;
-}
-.hero-fx__stars {
+.hero-fx__canvas {
   position: absolute;
   inset: 0;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 22%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1.5px 1.5px at 68% 18%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 34% 62%, rgba(255,255,255,0.45), transparent),
-    radial-gradient(1px 1px at 82% 54%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1.5px 1.5px at 52% 82%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 24% 88%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 90% 84%, rgba(255,255,255,0.35), transparent);
-  animation: heroTwinkle 7s ease-in-out infinite;
-}
-.hero-fx__grid {
-  position: absolute;
-  left: -25%; right: -25%; bottom: -3rem;
-  height: 18rem;
-  background-image:
-    linear-gradient(rgba(201, 60, 50, 0.22) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(201, 60, 50, 0.22) 1px, transparent 1px);
-  background-size: 46px 46px;
-  transform: perspective(340px) rotateX(62deg);
-  transform-origin: bottom center;
-  opacity: 0.28;
-  -webkit-mask-image: linear-gradient(to top, #000 0%, transparent 85%);
-  mask-image: linear-gradient(to top, #000 0%, transparent 85%);
-  animation: heroGridPan 3.2s linear infinite;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .hero-fx__vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 32%, rgba(0, 0, 0, 0.55) 100%);
-}
-
-@keyframes heroDrift1 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(5%, 4%, 0) scale(1.14); }
-}
-@keyframes heroDrift2 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1.08); }
-  50% { transform: translate3d(-4%, -5%, 0) scale(1); }
-}
-@keyframes heroDrift3 {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(3%, -4%, 0) scale(1.2); }
-}
-@keyframes heroGridPan {
-  from { background-position: 0 0; }
-  to { background-position: 0 46px; }
-}
-@keyframes heroTwinkle {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.85; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-fx__orb,
-  .hero-fx__stars,
-  .hero-fx__grid {
-    animation: none;
-  }
+  background: radial-gradient(ellipse at center, transparent 42%, rgba(0, 0, 0, 0.62) 100%);
 }

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
-import HeroAurora from "@/components/HeroAurora";
+import HeroConstellation from "@/components/HeroConstellation";
+import HeroSpace from "@/components/HeroSpace";
 import {
   Award,
   ArrowRight,
@@ -91,7 +92,7 @@ export default async function CertificationsPage() {
     <div className="flex flex-col">
       {/* Hero */}
       <section className="relative bg-[#141414] text-white py-24 md:py-28 overflow-hidden">
-        <HeroAurora />
+        <HeroConstellation />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <span className="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-[#A92B2B]/20 text-[#ff8080] text-sm font-semibold mb-6 border border-[#A92B2B]/30">
             <ShieldCheck className="w-4 h-4" /> 과학기술정보통신부 등록 민간자격
@@ -239,7 +240,7 @@ export default async function CertificationsPage() {
 
       {/* Final CTA */}
       <section className="py-20 bg-[#141414] relative overflow-hidden text-center">
-        <HeroAurora />
+        <HeroSpace />
         <div className="relative z-10 max-w-3xl mx-auto px-4">
           <Award className="w-12 h-12 text-[#ff8080] mx-auto mb-6" strokeWidth={1.6} />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
