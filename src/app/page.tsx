@@ -2,17 +2,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, BookOpen, BrainCircuit, Users, Settings, Award, GraduationCap, Target } from "lucide-react";
 import ContactForm from "./ContactForm";
+import HeroConstellation from "@/components/HeroConstellation";
+import HeroSpace from "@/components/HeroSpace";
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       
       {/* Hero Section */}
-      <section className="relative bg-[#1A1A1A] text-white py-32 overflow-hidden">
-        {/* Background Decorative Elements */}
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 rounded-full bg-[#A92B2B] opacity-20 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-96 h-96 rounded-full bg-[#A92B2B] opacity-20 blur-3xl"></div>
-        
+      <section className="relative bg-[#141414] text-white py-32 overflow-hidden">
+        {/* 성좌 모션 배경 */}
+        <HeroConstellation />
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 flex flex-col items-center text-center">
           <span className="inline-block py-1 px-3 rounded-full bg-[#A92B2B]/20 text-[#ff8080] text-sm font-semibold mb-6 border border-[#A92B2B]/30">
             ACCL AI 러닝 센터
@@ -350,7 +351,8 @@ export default function Home() {
       </section>
 
       {/* Exam Banner CTA */}
-      <section className="py-20 bg-[#1A1A1A] relative overflow-hidden text-center">
+      <section className="py-20 bg-[#141414] relative overflow-hidden text-center">
+        <HeroSpace />
         <div className="relative z-10 max-w-4xl mx-auto px-4">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">자신의 AI 역량을 증명하세요</h2>
           <p className="text-xl text-gray-400 mb-10">
