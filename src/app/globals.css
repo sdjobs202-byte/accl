@@ -44,10 +44,10 @@ body {
 .hero-fx__space {
   position: absolute;
   inset: 0;
+  /* 은은한 글로우는 오른쪽 위 한 곳에만, 나머지는 차분한 딥스페이스 */
   background:
-    radial-gradient(85% 65% at 18% 12%, rgba(120, 48, 62, 0.28) 0%, transparent 58%),
-    radial-gradient(75% 65% at 85% 88%, rgba(70, 52, 110, 0.26) 0%, transparent 58%),
-    radial-gradient(130% 120% at 50% 38%, #17121a 0%, #100c11 55%, #0a090b 100%);
+    radial-gradient(60% 55% at 86% 14%, rgba(150, 72, 70, 0.22) 0%, transparent 58%),
+    radial-gradient(130% 120% at 50% 50%, #141019 0%, #0d0a10 60%, #08070a 100%);
 }
 .hero-fx__canvas {
   position: absolute;

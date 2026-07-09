@@ -3,11 +3,10 @@
 import { useEffect, useRef } from "react";
 
 /**
- * 히어로 배경 성좌 애니메이션 (우주 속 별 + 근접 시 연결선, Obsidian 그래프뷰 느낌).
- * - 순수 canvas 2D, 외부 라이브러리 없음
- * - 화면 밖이면 자동 정지(IntersectionObserver), prefers-reduced-motion이면 정지 프레임
- * - 마우스 위치에 따라 은은한 시차(parallax)
- * 감싸는 요소는 `relative overflow-hidden`, 콘텐츠는 `relative z-10`.
+ * 히어로 배경 성좌 — 오른쪽 위 한 곳에만 은은한 별무리가 모여 살짝 빛나고,
+ * 가까운 별끼리만 아주 옅은 선으로 이어짐. 나머지는 차분한 딥스페이스.
+ * - 순수 canvas 2D, 라이브러리 없음 / 화면 밖이면 정지 / reduced-motion이면 정지 프레임
+ * - 마우스 시차는 아주 약하게
  */
 export default function HeroConstellation() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -25,28 +24,41 @@ export default function HeroConstellation() {
     let raf = 0;
     let running = false;
 
-    const LINK = 132;
+    const LINK = 116;
     const LINK2 = LINK * LINK;
 
-    type P = { x: number; y: number; vx: number; vy: number; r: number; depth: number; hub: boolean };
+    type P = { x: number; y: number; vx: number; vy: number; r: number; depth: number; hub: boolean; rx: number; ry: number; m: number };
     let ps: P[] = [];
 
-    // 마우스 시차 (전역 오프셋, 파티클 depth로 층위감)
+    // 별무리 초점 (오른쪽 위) + 여기서 멀어질수록 사라짐
+    let fx = 0;
+    let fy = 0;
+    let range = 1;
+
     const target = { x: 0, y: 0 };
     const off = { x: 0, y: 0 };
     let pointerInside = false;
 
     function seed() {
-      const count = Math.round(Math.min(96, Math.max(26, (w * h) / 14000)));
-      ps = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
-        r: Math.random() * 1.5 + 0.5,
-        depth: 0.4 + Math.random() * 0.7,
-        hub: Math.random() < 0.1,
-      }));
+      // 개수 확 줄임 (성글게)
+      const count = Math.round(Math.min(52, Math.max(14, (w * h) / 24000)));
+      ps = Array.from({ length: count }, () => {
+        // 오른쪽 위로 치우쳐 생성 (한쪽에 모이게)
+        const x = (0.45 + Math.random() * 0.6) * w;
+        const y = (Math.random() * 0.55) * h;
+        return {
+          x,
+          y,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: (Math.random() - 0.5) * 0.12,
+          r: Math.random() * 1.1 + 0.4,
+          depth: 0.4 + Math.random() * 0.6,
+          hub: Math.random() < 0.08,
+          rx: x,
+          ry: y,
+          m: 1,
+        };
+      });
     }
 
     function resize() {
@@ -57,11 +69,13 @@ export default function HeroConstellation() {
       canvas!.width = Math.max(1, Math.floor(w * dpr));
       canvas!.height = Math.max(1, Math.floor(h * dpr));
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+      fx = w * 0.86;
+      fy = h * 0.15;
+      range = Math.hypot(w, h) * 0.5;
       seed();
     }
 
     function frame() {
-      // 시차 오프셋 이징
       const tx = pointerInside ? target.x : 0;
       const ty = pointerInside ? target.y : 0;
       off.x += (tx - off.x) * 0.05;
@@ -69,7 +83,6 @@ export default function HeroConstellation() {
 
       ctx!.clearRect(0, 0, w, h);
 
-      // 위치 갱신 + 렌더 좌표 계산
       for (let i = 0; i < ps.length; i++) {
         const p = ps[i];
         p.x += p.vx;
@@ -78,22 +91,30 @@ export default function HeroConstellation() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
         p.x = p.x < 0 ? 0 : p.x > w ? w : p.x;
         p.y = p.y < 0 ? 0 : p.y > h ? h : p.y;
-        (p as any).rx = p.x + off.x * p.depth;
-        (p as any).ry = p.y + off.y * p.depth;
+        p.rx = p.x + off.x * p.depth;
+        p.ry = p.y + off.y * p.depth;
+        // 초점에서 멀수록 흐려짐 (한쪽만 빛나게)
+        const d = Math.hypot(p.x - fx, p.y - fy) / range;
+        const t = d < 1 ? 1 - d : 0;
+        p.m = t * t; // 부드러운 감쇠
       }
 
-      // 연결선
+      // 아주 옅은 연결선 (양끝이 모두 밝을 때만)
       for (let i = 0; i < ps.length; i++) {
-        const a = ps[i] as any;
+        const a = ps[i];
+        if (a.m < 0.05) continue;
         for (let j = i + 1; j < ps.length; j++) {
-          const b = ps[j] as any;
+          const b = ps[j];
+          if (b.m < 0.05) continue;
           const dx = a.rx - b.rx;
           const dy = a.ry - b.ry;
           const d2 = dx * dx + dy * dy;
           if (d2 < LINK2) {
-            const t = 1 - Math.sqrt(d2) / LINK;
-            ctx!.strokeStyle = `rgba(214,152,142,${t * 0.4})`;
-            ctx!.lineWidth = 0.6;
+            const lt = 1 - Math.sqrt(d2) / LINK;
+            const alpha = lt * 0.22 * Math.min(a.m, b.m);
+            if (alpha < 0.01) continue;
+            ctx!.strokeStyle = `rgba(206,158,150,${alpha})`;
+            ctx!.lineWidth = 0.5;
             ctx!.beginPath();
             ctx!.moveTo(a.rx, a.ry);
             ctx!.lineTo(b.rx, b.ry);
@@ -102,19 +123,21 @@ export default function HeroConstellation() {
         }
       }
 
-      // 별(노드)
+      // 별 (작고 은은하게)
       for (let i = 0; i < ps.length; i++) {
-        const p = ps[i] as any;
-        const rad = p.hub ? p.r * 1.9 : p.r;
-        const glow = rad * 5;
+        const p = ps[i];
+        if (p.m < 0.02) continue;
+        const rad = p.hub ? p.r * 1.7 : p.r;
+        const glow = rad * 3.2;
         const g = ctx!.createRadialGradient(p.rx, p.ry, 0, p.rx, p.ry, glow);
-        g.addColorStop(0, p.hub ? "rgba(255,172,132,0.85)" : "rgba(255,241,236,0.7)");
+        const gi = (p.hub ? 0.5 : 0.34) * p.m;
+        g.addColorStop(0, p.hub ? `rgba(255,180,140,${gi})` : `rgba(255,244,240,${gi})`);
         g.addColorStop(1, "rgba(255,255,255,0)");
         ctx!.fillStyle = g;
         ctx!.beginPath();
         ctx!.arc(p.rx, p.ry, glow, 0, Math.PI * 2);
         ctx!.fill();
-        ctx!.fillStyle = p.hub ? "rgba(255,206,178,1)" : "rgba(255,255,255,0.92)";
+        ctx!.fillStyle = p.hub ? `rgba(255,210,185,${0.9 * p.m})` : `rgba(255,255,255,${0.8 * p.m})`;
         ctx!.beginPath();
         ctx!.arc(p.rx, p.ry, rad, 0, Math.PI * 2);
         ctx!.fill();
@@ -135,7 +158,7 @@ export default function HeroConstellation() {
 
     resize();
     frame();
-    cancelAnimationFrame(raf); // 초기 1프레임만 그려두고 대기
+    cancelAnimationFrame(raf);
     running = false;
 
     const io = new IntersectionObserver(
@@ -155,8 +178,8 @@ export default function HeroConstellation() {
         ev.clientX >= rect.left && ev.clientX <= rect.right && ev.clientY >= rect.top && ev.clientY <= rect.bottom;
       pointerInside = inside;
       if (inside) {
-        target.x = ((ev.clientX - rect.left) / rect.width - 0.5) * 26;
-        target.y = ((ev.clientY - rect.top) / rect.height - 0.5) * 26;
+        target.x = ((ev.clientX - rect.left) / rect.width - 0.5) * 16;
+        target.y = ((ev.clientY - rect.top) / rect.height - 0.5) * 16;
       }
     };
     window.addEventListener("pointermove", onMove);
