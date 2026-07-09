@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import HeroConstellation from "@/components/HeroConstellation";
+import HeroSpace from "@/components/HeroSpace";
 import {
   Award,
   ArrowRight,
@@ -89,9 +91,8 @@ export default async function CertificationsPage() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="relative bg-[#1A1A1A] text-white py-24 md:py-28 overflow-hidden">
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 rounded-full bg-[#A92B2B] opacity-20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-96 h-96 rounded-full bg-[#A92B2B] opacity-20 blur-3xl" />
+      <section className="relative bg-[#141414] text-white py-24 md:py-28 overflow-hidden">
+        <HeroConstellation />
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <span className="inline-flex items-center gap-1.5 py-1 px-3 rounded-full bg-[#A92B2B]/20 text-[#ff8080] text-sm font-semibold mb-6 border border-[#A92B2B]/30">
             <ShieldCheck className="w-4 h-4" /> 과학기술정보통신부 등록 민간자격
@@ -238,8 +239,8 @@ export default async function CertificationsPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-[#1A1A1A] relative overflow-hidden text-center">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-24 w-96 h-96 rounded-full bg-[#A92B2B] opacity-20 blur-3xl" />
+      <section className="py-20 bg-[#141414] relative overflow-hidden text-center">
+        <HeroSpace />
         <div className="relative z-10 max-w-3xl mx-auto px-4">
           <Award className="w-12 h-12 text-[#ff8080] mx-auto mb-6" strokeWidth={1.6} />
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
