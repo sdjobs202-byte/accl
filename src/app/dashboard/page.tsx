@@ -58,8 +58,8 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="md:col-span-2 space-y-8">
+        <div className="space-y-8">
+          <div className="space-y-8">
 
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <div className="flex items-center justify-between mb-6">
@@ -137,34 +137,17 @@ export default async function DashboardPage() {
 
           </div>
 
+          {/* 수료증 기능 추후 진행 예정으로 임시 주석 처리 */}
+          {/* 
           <div className="space-y-8">
             <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 flex items-center mb-6">
-                <Award className="w-5 h-5 text-[#A92B2B] mr-2" /> 내 수료증
+                <Award className="w-[#A92B2B] mr-2" /> 내 수료증
               </h2>
-              {certificates.length === 0 ? (
-                <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Award className="w-8 h-8 text-gray-300" />
-                  </div>
-                  <p className="text-gray-500 text-sm">아직 취득한 수료증이 없습니다.<br/>시험에 도전해보세요!</p>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {certificates.map((cert: any) => (
-                    <div key={cert.id} className="border border-[#A92B2B]/20 bg-red-50/30 rounded-xl p-4 text-center">
-                      <Award className="w-8 h-8 text-[#A92B2B] mx-auto mb-2" />
-                      <p className="font-bold text-sm text-gray-900 mb-1">{cert.certificateNumber}</p>
-                      <p className="text-xs text-gray-500 mb-3">발급일: {new Date(cert.issueDate).toLocaleDateString()}</p>
-                      <Link href={`/certificate/${cert.id}`} className="inline-block bg-[#A92B2B] text-white text-xs px-4 py-2 rounded-lg font-medium hover:bg-red-800 transition-colors">
-                        수료증 보기
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              )}
+              ...
             </div>
           </div>
+          */}
         </div>
 
       </div>

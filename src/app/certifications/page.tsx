@@ -26,7 +26,7 @@ const CERTS = [
     level: "입문 · 기초",
     passingScore: 70,
     questionHint: "약 30문항",
-    desc: "머신러닝·딥러닝·생성형 AI의 기본 개념부터 프롬프트 활용, AI 윤리까지. AI를 처음 배우는 분이 일상과 업무에서 자신 있게 활용하기 위한 첫 자격입니다.",
+    desc: "AI 리터러시 기초 역량을 인증하는 자격입니다. 생성형 AI 툴에 로그인하고 기본 명령어를 입력하고 툴 선정 방법부터, 목적과 역할을 담은 프롬프트로 원하는 결과를 얻는 방법까지의 범위입니다. 개인정보 입력 시 주의사항과 결과물 사실 확인 같은 기본 윤리도 함께 평가합니다.",
     forWhom: "AI 입문자 · 일반인 · 직장인",
   },
   {
@@ -36,7 +36,7 @@ const CERTS = [
     level: "심화 · 실무",
     passingScore: 75,
     questionHint: "약 40문항",
-    desc: "트랜스포머·RLHF·RAG·파인튜닝 등 심화 개념까지 이해하고 실무에 응용하는 전문 자격. AI를 업무에 깊이 있게 활용하려는 분께 권합니다.",
+    desc: "생성형 AI 핵심 개념을 이해하고 실제 업무에 적용할 수 있는 분을 위한 자격입니다. 업무 상황에 맞춰 프롬프트를 구성하고, 나온 결과물을 선별·재구성하는 실무 능력을 검증합니다. AI 윤리 원칙을 이해하고 사용 중 생길 수 있는 위험을 미리 식별해 대응하는 능력도 함께 평가합니다.",
     forWhom: "AI 활용 실무자 · 심화 학습자",
   },
   {
@@ -46,7 +46,7 @@ const CERTS = [
     level: "강사 · 교수역량",
     passingScore: 75,
     questionHint: "약 40문항",
-    desc: "AI 리터러시를 남에게 가르칠 수 있는 교수 역량을 인증합니다. 강의·교육 현장에서 AI를 다루는 강사·교육자를 위한 자격입니다.",
+    desc: "AI 리터러시를 타인에게 가르칠 수 있는 분을 위한 자격입니다. 필기시험에서는 AI 기술과 리터러시 핵심 개념, 생성형 AI 실무 도구 활용, AI 윤리·안전 원칙에 대한 이해를 확인합니다. 실기시험에서는 강의를 기획하고 콘텐츠 생성 능력, 전달력과 표현력, AI 도구 활용 실습 능력, 강사로서의 태도까지 종합적으로 평가합니다.",
     forWhom: "강사 · 교육자 · 예비 강사",
   },
 ] as const;
@@ -101,9 +101,7 @@ export default async function CertificationsPage() {
             자격관리센터
           </h1>
           <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mb-10 leading-relaxed">
-            AI 역량을 공식 자격으로 증명하세요.
-            <br className="hidden md:block" />
-            온라인으로 응시하고, 합격하면 수료증까지 바로 받습니다.
+            온라인으로 응시하고, AI 역량을 자격으로 증명하세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
