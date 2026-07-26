@@ -303,6 +303,8 @@ export default function ExamClient({ exam }: { exam: Exam }) {
 
             {/* 액션 버튼 */}
             <div className="flex flex-col sm:flex-row gap-3">
+              {/* 수료증 미리보기 기능 추후 진행 예정으로 임시 숨김 처리 */}
+              {/*
               {result.passed && result.certificateId ? (
                 <button
                   onClick={() =>
@@ -313,13 +315,10 @@ export default function ExamClient({ exam }: { exam: Exam }) {
                   수료증 보기
                 </button>
               ) : null}
+              */}
               <button
                 onClick={() => router.push("/exams")}
-                className={`flex-1 px-6 py-3 rounded-lg font-bold transition-colors ${
-                  result.passed && result.certificateId
-                    ? "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                    : "bg-[#A92B2B] text-white hover:bg-[#8B2020]"
-                }`}
+                className="flex-1 px-6 py-3 rounded-lg font-bold transition-colors bg-[#A92B2B] text-white hover:bg-[#8B2020]"
               >
                 자격 인증 센터로
               </button>
