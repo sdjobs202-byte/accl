@@ -9,8 +9,11 @@
   const dialog = document.getElementById('jobfair-dialog');
   let winnerCount = 0;
   const winnerLimit = 3;
+  const mixDuration = 1000;
+  let drawing = false;
   const states = {
     ready: ['오늘의 행운을 만나보세요!', '아래 버튼을 눌러 추첨에 참여해 주세요.', '행운 뽑기'],
+    drawing: ['구슬을 섞는 중…', '두근두근! 잠시 후 결과가 나와요.', '추첨 중…'],
     won: ['당첨!', '1시간의 1:1 온라인 면접코칭 기회를 드립니다. 이 화면을 인포메이션에 보여주세요!', '다음 추첨'],
     miss: ['실패', '아쉽지만 이번에는 당첨되지 않았어요. 다시 행운에 도전해 보세요!', '다시 뽑기'],
   };
@@ -19,7 +22,7 @@
     title.textContent = states[next][0];
     message.textContent = states[next][1];
     button.textContent = winnerCount >= winnerLimit ? '추첨 마감' : states[next][2];
-    button.disabled = winnerCount >= winnerLimit;
+    button.disabled = drawing || winnerCount >= winnerLimit;
   }
 
   // Equal-probability buckets, with no server request, cookies or saved state.
@@ -30,12 +33,18 @@
     return value[0] % 100 < 5;
   }
 
+  // The balls mix for about a second before the result appears.
   button.addEventListener('click', () => {
-    if (winnerCount >= winnerLimit) return;
-    const won = winsThisDraw();
-    if (won) winnerCount += 1;
-    render(won ? 'won' : 'miss');
-    if (dialog.open) panel.focus({ preventScroll: true });
+    if (drawing || winnerCount >= winnerLimit) return;
+    drawing = true;
+    render('drawing');
+    setTimeout(() => {
+      drawing = false;
+      const won = winsThisDraw();
+      if (won) winnerCount += 1;
+      render(won ? 'won' : 'miss');
+      if (dialog.open) panel.focus({ preventScroll: true });
+    }, mixDuration);
   });
   render('ready');
 })();
