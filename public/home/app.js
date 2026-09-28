@@ -66,16 +66,16 @@ document.querySelectorAll('[data-close-dialog]').forEach(button => {
   button.addEventListener('click', () => document.getElementById(button.dataset.closeDialog)?.close());
 });
 
-// Announce the upcoming fair once per tab session; manual reopening stays available.
+// Announce the fair once per tab session; manual reopening stays available.
+// 행사일 이후에도 계속 노출 — 중지할 때 이 자동 열기 블록을 제거한다.
 const fairDialog = document.getElementById('jobfair-dialog');
 const fairDismissalKey = 'accl-jobfair-20260930-dismissed';
-const fairEndsAt = Date.parse('2026-09-30T17:00:00+09:00');
 let fairDismissed = false;
 try { fairDismissed = sessionStorage.getItem(fairDismissalKey) === '1'; } catch {}
 fairDialog.addEventListener('close', () => {
   try { sessionStorage.setItem(fairDismissalKey, '1'); } catch {}
 });
-if (Date.now() < fairEndsAt && !fairDismissed && !document.querySelector('.info-dialog[open]')) {
+if (!fairDismissed &&!document.querySelector('.info-dialog[open]')) {
   openDialog(fairDialog);
 }
 
