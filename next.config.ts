@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  // 메인 페이지 HTML(src/app/_home/index.html)을 문자열로 번들
+  webpack: (config) => {
+    config.module.rules.push({ test: /\.html$/, type: "asset/source" });
+    return config;
+  },
 };
 
 export default nextConfig;

@@ -42,21 +42,21 @@ export default async function RootLayout({
             <div className="flex justify-between items-center h-20">
               {/* Logo */}
               <div className="flex-shrink-0 flex items-center">
-                <Link href="/" className="text-2xl font-bold tracking-tighter text-[#A92B2B]">
+                <a href="/" className="text-2xl font-bold tracking-tighter text-[#A92B2B]">
                   ACCL.
-                </Link>
+                </a>
               </div>
 
               {/* Desktop Nav */}
               <nav className="hidden md:flex space-x-8 items-center">
-                <Link href="/#about" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">About</Link>
-                <Link href="/#ai-contents" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">AI Contents</Link>
-                <Link href="/#reference" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">Reference</Link>
-                <Link href="/#contact" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">Contact</Link>
+                <a href="/" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">About</a>
+                <a href="/#services" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">AI Contents</a>
+                <a href="/#reference" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">Reference</a>
+                <a href="https://open.kakao.com/me/ACCL" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#A92B2B] font-medium transition-colors">Contact</a>
                 <Link href="/certifications" className="text-[#A92B2B] hover:text-[#8e2323] font-semibold transition-colors">자격관리센터</Link>
-                <Link href="/#contact" className="bg-[#A92B2B] text-white px-5 py-2.5 rounded-full font-medium hover:bg-[#8e2323] transition-colors">
+                <a href="https://open.kakao.com/me/ACCL" target="_blank" rel="noopener noreferrer" className="bg-[#A92B2B] text-white px-5 py-2.5 rounded-full font-medium hover:bg-[#8e2323] transition-colors">
                   문의하기
-                </Link>
+                </a>
                 <div className="border-l border-gray-200 h-6 mx-2"></div>
                 
                 {session ? (
@@ -108,8 +108,8 @@ export default async function RootLayout({
               <div>
                 <h3 className="text-white font-semibold mb-4">바로가기</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link href="/#about" className="hover:text-white transition-colors">About</Link></li>
-                  <li><Link href="/#ai-contents" className="hover:text-white transition-colors">AI Contents</Link></li>
+                  <li><a href="/" className="hover:text-white transition-colors">About</a></li>
+                  <li><a href="/#services" className="hover:text-white transition-colors">AI Contents</a></li>
                 </ul>
               </div>
               <div>
@@ -117,15 +117,15 @@ export default async function RootLayout({
                 <ul className="space-y-2 text-sm">
                   <li>
                     <a
-                      href="https://open.kakao.com/o/sywGHfti"
+                      href="https://open.kakao.com/me/ACCL"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-white transition-colors"
                     >
-                      카카오톡 1:1 오픈채팅
+                      카카오톡 1:1 문의
                     </a>
                   </li>
-                  <li className="text-gray-500 text-xs break-all">open.kakao.com/o/sywGHfti</li>
+                  <li className="text-gray-500 text-xs break-all">open.kakao.com/me/ACCL</li>
                 </ul>
               </div>
             </div>

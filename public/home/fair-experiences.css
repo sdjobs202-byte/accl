@@ -1,0 +1,66 @@
+/* Pastel experience cards. QR images are extracted unchanged from the supplied
+   PDF; each anchor uses the corresponding full experience URL in that PDF. */
+.fair-experiences{
+  margin-top:24px;padding:29px 28px 28px;border:1px solid #e5e9ff;
+  border-radius:26px;color:#2e3554;
+  background:radial-gradient(ellipse at 0 0,#e3f5ff 0,transparent 48%),radial-gradient(ellipse at 100% 100%,#f8eaff 0,transparent 45%),linear-gradient(135deg,#fbfdff,#f0edff);
+  box-shadow:inset 0 2px 0 #fff,0 18px 38px #0614471c;
+}
+.fair-experiences-heading{text-align:center;margin-bottom:29px}
+.fair-experiences-kicker{display:block;color:#7461a1;font-size:.75rem;line-height:1.5;font-weight:800;letter-spacing:2px;margin-bottom:9px}
+.fair-experiences-heading h3{margin:0;color:#2e3554;font-size:2rem;line-height:1.45;font-weight:850;letter-spacing:-.045em}
+.fair-experiences-heading h3>span{color:#6450a4}
+.fair-experiences-heading p{margin:10px 0 0;color:#536079;font-size:1rem;line-height:1.75;letter-spacing:-.02em}
+.fair-experience-party,.fair-cheer-icons{--icon-fill:#d9c8ff;display:flex;align-items:center;justify-content:center;gap:18px;color:#7855b2;pointer-events:none}
+.fair-experience-party{margin:0 auto 21px}
+.fair-party-sticker{display:grid;place-items:center;width:54px;height:54px;border:2px solid #fff;border-radius:19px;background:linear-gradient(145deg,#fff,#e6deff);box-shadow:inset 0 2px 0 #fff,0 4px 0 #d6ccea,0 9px 15px #7a64a81c}
+.fair-party-sticker svg{width:35px;height:35px;filter:drop-shadow(0 2px 0 #fff)}
+.fair-party-cap{transform:rotate(-12deg)}
+.fair-party-rocket{--icon-fill:#c1e9ff;color:#437cac;background:linear-gradient(145deg,#fff,#d4efff);box-shadow:inset 0 2px 0 #fff,0 4px 0 #bfdcec,0 9px 15px #5677971c;transform:rotate(12deg)}
+.fair-party-mini{--icon-fill:#fce5ac;display:block;width:20px;height:20px;color:#c49641}
+.fair-party-mini:last-child{--icon-fill:#d6c5ff;color:#9567c5;transform:rotate(15deg)}
+.fair-party-mini svg{display:block;width:100%;height:100%}
+.fair-experience-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:23px 16px;margin:0;padding:0;list-style:none}
+.fair-experience-card{
+  --experience-tint:#eaf6ff;--experience-end:#eeecff;--experience-edge:#dde5f7;--experience-ink:#5266a4;--icon-fill:#badcff;
+  grid-column:span 3;position:relative;isolation:isolate;min-width:0;display:flex;flex-direction:column;align-items:center;
+  padding:22px 14px 21px;border:1px solid transparent;border-radius:23px;text-align:center;
+  background:linear-gradient(135deg,#ffffffed,var(--experience-tint) 54%,var(--experience-end)) padding-box,linear-gradient(140deg,#fff,#d6def6 65%,#ded4f1) border-box;
+  box-shadow:inset 0 2px 0 #fff,inset 0 -2px 0 #ffffffad,0 5px 0 var(--experience-edge),0 12px 22px #64669714;
+}
+.fair-experience-card:nth-child(-n+3){grid-column:span 4}
+.fair-experience-card:nth-child(2),.fair-experience-card:nth-child(6){--experience-tint:#f0eaff;--experience-end:#e8f1ff;--experience-edge:#e1def4;--experience-ink:#77599d;--icon-fill:#d6bfff}
+.fair-experience-card:nth-child(3){--experience-tint:#e7f8f5;--experience-end:#e9efff;--experience-edge:#dbeaf0;--experience-ink:#45797e;--icon-fill:#a9e3d7}
+.fair-experience-card:nth-child(4){--experience-tint:#e9f6ff;--experience-end:#e9efff;--experience-edge:#d7e6f7;--experience-ink:#427598;--icon-fill:#b8def4}
+.fair-experience-card:nth-child(5){--experience-tint:#fff0f6;--experience-end:#f0eaff;--experience-edge:#ebdded;--experience-ink:#976580;--icon-fill:#f7c9df}
+.fair-experience-card:nth-child(7){--experience-tint:#fff3e9;--experience-end:#f4eaff;--experience-edge:#eadfed;--experience-ink:#986387;--icon-fill:#f9bbd4}
+.fair-experience-card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse at 100% 0,#ffffffb0,transparent 62%)}
+.fair-experience-number{position:absolute;top:16px;right:14px;display:grid;place-items:center;min-width:30px;height:27px;padding-inline:7px;border:1px solid #fff;border-radius:10px;color:var(--experience-ink);background:#ffffffb8;box-shadow:0 2px 4px #575b8610;font-size:.75rem;line-height:1;font-weight:850;letter-spacing:.04em}
+.fair-experience-icon{display:grid;place-items:center;width:62px;height:62px;flex:none;margin:0 0 19px;border:1px solid #fff;border-radius:21px;color:var(--experience-ink);background:radial-gradient(ellipse at 30% 0,#fff 0,transparent 62%),linear-gradient(140deg,#fff,var(--icon-fill));box-shadow:inset 0 2px 0 #fff,inset 0 -2px 1px #ffffff80,0 4px 0 var(--experience-edge),0 9px 13px #56678b22;transform:rotate(-5deg)}
+.fair-experience-card:nth-child(2n) .fair-experience-icon{transform:rotate(5deg)}
+.fair-experience-icon svg{width:35px;height:35px;filter:drop-shadow(0 2px 0 #ffffffb3)}
+.fair-experience-card h4{margin:0;color:#333d5b;font-size:1.125rem;line-height:1.5;font-weight:850;letter-spacing:-.035em;overflow-wrap:anywhere}
+.fair-experience-title-note{font-weight:700;color:var(--experience-ink)}
+.fair-experience-guide{width:100%;max-width:27em;margin:11px 0 19px;color:#59637a;font-size:.875rem;line-height:1.7;letter-spacing:-.025em;overflow-wrap:anywhere}
+.fair-experience-guide strong{font-weight:750;color:#424e69}
+.fair-qr-link{display:flex;flex-direction:column;align-items:center;width:100%;margin-top:auto;border-radius:15px;color:#4f4685;text-decoration:none}
+.fair-qr-slot{display:grid;place-items:center;flex:none;aspect-ratio:1;width:min(100%,184px);padding:12px;border:1px solid #e0e5f2;border-radius:16px;background:#fff;box-shadow:0 5px 14px #5d6c9814;transition:box-shadow .18s ease,border-color .18s ease}
+.fair-qr-code{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;image-rendering:pixelated}
+.fair-experience-platform{margin-top:13px;color:#71728a;font-size:.6875rem;line-height:1.5;font-weight:750;letter-spacing:.09em}
+.fair-experience-action{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;width:100%;margin-top:5px;padding:10px 7px;border:1px solid #ffffffd6;border-radius:12px;color:#514979;background:#ffffffb3;box-shadow:0 2px 0 #dcddee60;font-size:.875rem;line-height:1.5;font-weight:800}
+.fair-experience-action>span[aria-hidden]{font-size:1.1rem;line-height:1}
+.fair-qr-link:hover .fair-qr-slot{border-color:#a995d9;box-shadow:0 7px 20px #7061a72b}
+.fair-qr-link:hover .fair-experience-action{background:#fff;color:#6748a5}
+#jobfair-dialog .fair-experiences .fair-qr-link:focus-visible{outline:3px solid #7750c8;outline-offset:5px}
+.fair-experience-cheer{text-align:center;margin-top:30px;padding-top:22px;border-top:1px dashed #d6d3e7}
+.fair-cheer-icons{gap:16px}
+.fair-cheer-icons .fair-party-sticker{width:46px;height:46px;border-radius:16px}
+.fair-cheer-icons .fair-party-sticker svg{width:28px;height:28px}
+.fair-party-message{--icon-fill:#bbe8df;color:#578a80;background:linear-gradient(145deg,#fff,#d8f4ec);box-shadow:inset 0 2px 0 #fff,0 4px 0 #c5e1d9,0 9px 15px #68887e15;transform:rotate(-9deg)}
+.fair-party-heart{--icon-fill:#f7c4dc;color:#b17198;background:linear-gradient(145deg,#fff,#fce0f0);box-shadow:inset 0 2px 0 #fff,0 4px 0 #ead1e2,0 9px 15px #95667f15;transform:rotate(9deg)}
+.fair-experience-cheer p{margin:16px 0 0;color:#68718a;font-size:.9375rem;line-height:1.7;letter-spacing:-.025em}
+.fair-experience-cheer strong{color:#705597;font-weight:800}
+@media(max-width:1000px){.fair-experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fair-experience-card:nth-child(n){grid-column:span 1}.fair-experience-card:last-child{grid-column:1/-1;width:calc((100% - 16px)/2);justify-self:center}.fair-experience-card{padding-inline:20px}.fair-experience-guide{max-width:22em}}
+@media(max-width:850px){.fair-experiences{padding:27px 22px 28px}.fair-experiences-heading h3{font-size:1.8rem}.fair-experience-card{padding-inline:16px}}
+@media(max-width:620px){.fair-experiences{margin-top:21px;padding:25px 17px;border-radius:21px}.fair-experiences-heading{margin-bottom:24px}.fair-experiences-heading h3{font-size:1.625rem}.fair-experiences-heading p{font-size:.9375rem}.fair-experiences-kicker{font-size:.6875rem;letter-spacing:1.5px}.fair-experience-grid{grid-template-columns:1fr;gap:23px}.fair-experience-card:nth-child(n){grid-column:auto;width:100%;padding:23px 21px;border-radius:21px}.fair-experience-card h4{font-size:1.25rem}.fair-experience-guide{font-size:.9375rem;max-width:22em}.fair-qr-link{max-width:250px}.fair-qr-slot{width:min(100%,192px)}.fair-experience-number{top:18px;right:18px}.fair-experience-action{font-size:.9375rem}.fair-experience-party{gap:14px}.fair-party-sticker{width:48px;height:48px;border-radius:17px}.fair-party-sticker svg{width:31px;height:31px}}
+@media(prefers-reduced-motion:reduce){.fair-qr-slot{transition:none}}

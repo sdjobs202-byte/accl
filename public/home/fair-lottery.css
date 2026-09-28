@@ -1,0 +1,38 @@
+.fair-lottery{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:35px;align-items:center;margin-top:26px;padding:34px;border:1px solid #e3e8ff;border-radius:28px;color:#303655;background:radial-gradient(ellipse at 3% 20%,#dfefff 0,transparent 52%),radial-gradient(ellipse at 100% 100%,#e9dbff 0,transparent 56%),linear-gradient(130deg,#fbfdff,#f4f1ff);box-shadow:inset 0 2px 0 #fff,0 7px 0 #baccec30,0 18px 38px #03134725}
+.lottery-play{min-width:0;text-align:center}
+.lottery-machine-stage{position:relative;display:grid;place-items:center;max-width:350px;aspect-ratio:1.08;margin:0 auto 13px;isolation:isolate}
+.lottery-machine-stage::before{content:"";position:absolute;z-index:-1;inset:11% 1% 3%;border-radius:50%;background:radial-gradient(circle,#fff 10%,#d7daff8c 59%,transparent 71%)}
+.lottery-machine-stage::after{content:"";position:absolute;z-index:-1;width:66%;height:15px;bottom:5px;border-radius:50%;background:#8591c444;filter:blur(9px)}
+.lottery-machine-art{display:block;width:100%;height:auto;max-height:330px;object-fit:contain;transform-origin:50% 88%;filter:drop-shadow(0 10px 12px #747ab522)}
+.lottery-result{position:relative;min-height:112px;padding:17px 16px;border:1px solid #dbe2f5;border-radius:18px;background:#ffffffdb;box-shadow:inset 0 2px 0 #fff,0 5px 15px #6a6ca80b}
+.lottery-result:focus{outline:none}
+.lottery-result h4{margin:0;color:#554d86;font-size:1.125rem;font-weight:850;line-height:1.5;letter-spacing:-.035em}
+.lottery-result p{margin:5px 0 0;font-size:.9375rem;line-height:1.65;color:#677089;word-break:keep-all;overflow-wrap:anywhere}
+#jobfair-dialog .lottery-draw-button{display:block;width:100%;min-height:55px;margin:14px 0 0;padding:14px 16px;border:1px solid #a999e4;border-radius:16px;color:white;background:linear-gradient(125deg,#628feb,#8860d7);box-shadow:inset 0 2px 0 #ffffff55,0 5px 0 #5e51ac,0 9px 16px #5e62b334;font-size:1.0625rem;line-height:1.5;font-weight:800;letter-spacing:.015em;transition:transform .18s,box-shadow .18s}
+#jobfair-dialog .lottery-draw-button:not(:disabled):hover{transform:translateY(-2px);box-shadow:inset 0 2px 0 #ffffff55,0 7px 0 #5e51ac,0 13px 21px #5e62b334}
+#jobfair-dialog .lottery-draw-button:not(:disabled):active{transform:translateY(3px);box-shadow:inset 0 2px 0 #ffffff55,0 2px 0 #5e51ac}
+#jobfair-dialog .lottery-draw-button:disabled{cursor:default;color:#656d92;border-color:#cbd2e7;background:linear-gradient(140deg,#e7edfa,#e2def4);box-shadow:inset 0 2px 0 #fff,0 3px 0 #c8cce0}
+#jobfair-dialog .fair-lottery button:focus-visible{outline-color:#7050ba;outline-offset:7px}
+.lottery-participation-note{margin:15px 0 0;color:#65708b;font-size:.875rem;line-height:1.7}
+.lottery-kicker{display:inline-flex;align-items:center;gap:9px;color:#6d58a1;background:#ffffffa6;border:1px solid #fff;border-radius:99px;padding:7px 12px;font-size:.8125rem;font-weight:800;letter-spacing:1.4px;line-height:1.4}
+.lottery-kicker svg{width:19px;height:19px;color:#9670c7}
+.lottery-copy h3{margin:18px 0 16px;font-size:clamp(1.7rem,3.4vw,2.45rem);font-weight:900;line-height:1.35;letter-spacing:-.045em;color:#343b5b}
+.lottery-copy h3>span{display:block;color:#7657b3}
+.lottery-prize{margin:0;padding:20px 21px;border:1px solid #ffffffd9;border-radius:22px;background:linear-gradient(135deg,#ffffffe6,#edf1ffcf);box-shadow:inset 0 2px 0 #fff,0 5px 0 #e0e1f470,0 12px 18px #696f9c10}
+.lottery-prize-eyebrow{margin:0 0 8px;color:#765a9e;font-size:1.125rem;line-height:1.5;font-weight:800;letter-spacing:-.025em}
+.lottery-prize-main{margin:0;color:#374967;font-size:1.25rem;line-height:1.7;font-weight:650;letter-spacing:-.03em}
+.lottery-prize-main strong{color:#6660ba;font-weight:900}
+.lottery-prize-main .lottery-prize-highlight{display:block;font-size:1.625rem;line-height:1.45;margin-block:2px 5px;letter-spacing:-.045em}
+.lottery-information{display:flex;align-items:flex-start;gap:12px;margin:24px 0 0;color:#56607f;font-size:1rem;line-height:1.75;letter-spacing:-.025em}
+.lottery-information svg{flex:none;width:27px;height:27px;margin-top:2px;color:#7964ad}
+.lottery-information strong{color:#514581;font-weight:850}
+.lottery-copy-note{margin:16px 0 0;color:#66718a;font-size:.875rem;line-height:1.7}
+.fair-lottery[data-draw-state="won"] .lottery-result{border-color:#b29ae4;background:linear-gradient(140deg,#fff5cf,#f9e8ff 65%,#e7f5ff);box-shadow:inset 0 2px 0 #fff,0 0 0 3px #bd9dee26,0 9px 25px #8263b526}
+.fair-lottery[data-draw-state="won"] .lottery-result h4{color:#7951a8;font-size:2.25rem;line-height:1.2}
+.fair-lottery[data-draw-state="won"] .lottery-result p{color:#4b4563;font-weight:700;font-size:1rem}
+.fair-lottery[data-draw-state="won"] .lottery-machine-art{animation:lottery-win .65s ease-out}
+.fair-lottery[data-draw-state="miss"] .lottery-result h4{color:#6a6c8d;font-size:1.5rem}
+@keyframes lottery-win{0%,100%{transform:scale(1)}45%{transform:scale(1.045) translateY(-5px)}}
+@media(max-width:850px){.fair-lottery{gap:23px;padding:27px 24px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.lottery-copy h3{font-size:1.8rem}.lottery-prize{padding:17px}.lottery-prize-main{font-size:1.0625rem}.lottery-prize-main .lottery-prize-highlight{font-size:1.35rem}.lottery-result{padding:15px 12px}.lottery-machine-stage{aspect-ratio:1}}
+@media(max-width:700px){.fair-lottery{grid-template-columns:1fr;padding:25px 21px 28px;border-radius:23px;gap:29px}.lottery-copy{grid-row:1}.lottery-copy h3{font-size:1.9rem}.lottery-prize-main .lottery-prize-highlight{font-size:1.5rem}.lottery-machine-stage{max-width:300px;aspect-ratio:1.08}.lottery-play{max-width:390px;width:100%;margin-inline:auto}.lottery-copy-note{margin-top:12px}.lottery-information{margin-top:19px}.lottery-result h4{font-size:1.1875rem}}
+@media(prefers-reduced-motion:reduce){.fair-lottery .lottery-machine-art,.fair-lottery .lottery-result h4{animation:none!important}#jobfair-dialog .lottery-draw-button{transition:none}}

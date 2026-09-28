@@ -46,9 +46,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           ))}
         </nav>
         <div className="p-4 border-t border-gray-700">
-          <Link href="/" className="text-xs text-gray-500 hover:text-gray-300">
+          <a href="/" className="text-xs text-gray-500 hover:text-gray-300">
             홈으로 돌아가기
-          </Link>
+          </a>
         </div>
       </aside>
       <main className="flex-1 bg-gray-50 overflow-auto p-8">{children}</main>

@@ -1,0 +1,83 @@
+/* Supplied company/agency logos, shown with CSS clipping only.
+   Source: image(20260928-055029).png (1920 x 2047).
+   SNIP source: the previously supplied event poster (1024 x 1536).
+   Keep the original source images unchanged so brand colors and proportions survive. */
+.fair-company-grid{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:0}
+.fair-company-grid li:nth-child(n){display:grid;grid-template-columns:124px minmax(0,1fr);align-items:center;justify-content:start;gap:20px;grid-column:auto;min-height:92px;padding:15px 20px;border-left:0;border-bottom:1px solid #dce7f7;text-align:left;font-size:17px;line-height:1.55;letter-spacing:-.4px}
+.fair-company-grid li:nth-child(2n){border-left:1px solid #dce7f7}
+.fair-company-grid li:nth-last-child(-n+2){border-bottom:0}
+.fair-company-name{min-width:0;overflow-wrap:anywhere;font-weight:750;color:#18345c}
+.fair-logo{display:flex;align-items:center;justify-content:center;flex:none;width:124px;height:64px;background:#fff;border-radius:9px;overflow:hidden}
+.fair-logo-crop{display:block;flex:none;width:var(--logo-w);height:var(--logo-h);background-image:url("assets/job-fair-logo-reference.png");background-repeat:no-repeat;background-size:var(--sheet-w) var(--sheet-h);background-position:var(--logo-x) var(--logo-y)}
+.fair-logo-dark{background:#052a7e;border:1px solid #529bde40}
+.fair-organizer-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:0 22px}
+.fair-organizer-grid>div{display:block;padding:20px 0;border-top:1px solid #3eb6e270}
+.fair-organizer-grid>div:nth-child(2n){padding-left:0}
+.fair-organizer-grid dt{font-size:14px;line-height:1.6;margin:0 0 13px;color:#bddfff}
+.fair-organizer-grid dd{display:flex;align-items:center;gap:13px;margin:0;font-size:16px;line-height:1.6;font-weight:650;min-width:0}
+.fair-organizer-grid .fair-logo{display:flex;width:84px;height:64px}
+.fair-org-name{min-width:0;white-space:normal;overflow-wrap:anywhere}
+.fair-org-name small{display:block;font-size:14px;line-height:1.6;font-weight:500;color:#c9e4ff;margin-top:2px}
+.fair-org-name strong{font-size:20px;line-height:1.4;letter-spacing:-.5px}
+.fair-organizer-grid .fair-partners{grid-column:1/-1}
+.fair-organizer-grid .fair-partner-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 22px;font-size:16px}
+.fair-organizer-grid .fair-partner-list>.fair-partner-item{display:flex;align-items:center;gap:13px;white-space:normal;min-width:0}
+@media(max-width:900px){
+ .fair-company-grid li:nth-child(n){gap:14px;padding-inline:12px;grid-template-columns:112px minmax(0,1fr);font-size:16px}
+ .fair-company-grid .fair-logo{width:112px}
+ .fair-organizer-grid{grid-template-columns:1fr}
+ .fair-organizer-grid>div{padding-block:18px}
+ .fair-organizer-grid .fair-partner-list{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:760px){
+ .fair-company-grid{grid-template-columns:1fr}
+ .fair-company-grid li:nth-child(n){grid-column:auto;border-left:0;border-bottom:1px solid #dce7f7;grid-template-columns:124px minmax(0,1fr);gap:20px;padding:13px 7px;min-height:86px;font-size:17px}
+ .fair-company-grid li:last-child{border-bottom:0}
+ .fair-company-grid .fair-logo{width:124px}
+}
+@media(max-width:370px){
+ .fair-company-grid li:nth-child(n){grid-template-columns:112px minmax(0,1fr);gap:12px;padding-inline:0;font-size:16px}
+ .fair-company-grid .fair-logo{width:112px}
+}
+/* xai: source rectangle 249,263,81,72; uniform scale 0.75000000. */
+.fair-logo-xai{--logo-w:60.75000px;--logo-h:54.00000px;--sheet-w:1440.00000px;--sheet-h:1535.25000px;--logo-x:-186.75000px;--logo-y:-197.25000px;}
+/* tritonnet: source rectangle 204,426,313,79; uniform scale 0.35782748. */
+.fair-logo-tritonnet{--logo-w:112.00000px;--logo-h:28.26837px;--sheet-w:687.02875px;--sheet-h:732.47284px;--logo-x:-72.99681px;--logo-y:-152.43450px;}
+/* connecto: source rectangle 245,592,279,69; uniform scale 0.40143369. */
+.fair-logo-connecto{--logo-w:112.00000px;--logo-h:27.69892px;--sheet-w:770.75269px;--sheet-h:821.73477px;--logo-x:-98.35125px;--logo-y:-237.64875px;}
+/* murple: source rectangle 268,751,270,86; uniform scale 0.41481481. */
+.fair-logo-murple{--logo-w:112.00000px;--logo-h:35.67407px;--sheet-w:796.44444px;--sheet-h:849.12593px;--logo-x:-111.17037px;--logo-y:-311.52593px;}
+/* vowing: source rectangle 228,931,325,49; uniform scale 0.34461538. */
+.fair-logo-vowing{--logo-w:112.00000px;--logo-h:16.88615px;--sheet-w:661.66154px;--sheet-h:705.42769px;--logo-x:-78.57231px;--logo-y:-320.83692px;}
+/* hansolbio: source rectangle 152,1137,396,41; uniform scale 0.28282828. */
+.fair-logo-hansolbio{--logo-w:112.00000px;--logo-h:11.59596px;--sheet-w:543.03030px;--sheet-h:578.94949px;--logo-x:-42.98990px;--logo-y:-321.57576px;}
+/* drtech: source rectangle 216,1282,306,56; uniform scale 0.36601307. */
+.fair-logo-drtech{--logo-w:112.00000px;--logo-h:20.49673px;--sheet-w:702.74510px;--sheet-h:749.22876px;--logo-x:-79.05882px;--logo-y:-469.22876px;}
+/* maum: source rectangle 189,1449,270,59; uniform scale 0.41481481. */
+.fair-logo-maum{--logo-w:112.00000px;--logo-h:24.47407px;--sheet-w:796.44444px;--sheet-h:849.12593px;--logo-x:-78.40000px;--logo-y:-601.06667px;}
+/* ehan: source rectangle 166,1607,262,65; uniform scale 0.42748092. */
+.fair-logo-ehan{--logo-w:112.00000px;--logo-h:27.78626px;--sheet-w:820.76336px;--sheet-h:875.05344px;--logo-x:-70.96183px;--logo-y:-686.96183px;}
+/* poddeal: source rectangle 251,1780,184,67; uniform scale 0.60869565. */
+.fair-logo-poddeal{--logo-w:112.00000px;--logo-h:40.78261px;--sheet-w:1168.69565px;--sheet-h:1246.00000px;--logo-x:-152.78261px;--logo-y:-1083.47826px;}
+/* jastecm: source rectangle 1012,268,333,67; uniform scale 0.33633634. */
+.fair-logo-jastecm{--logo-w:112.00000px;--logo-h:22.53453px;--sheet-w:645.76577px;--sheet-h:688.48048px;--logo-x:-340.37237px;--logo-y:-90.13814px;}
+/* quopin: source rectangle 1103,419,171,92; uniform scale 0.58695652. */
+.fair-logo-quopin{--logo-w:100.36957px;--logo-h:54.00000px;--sheet-w:1126.95652px;--sheet-h:1201.50000px;--logo-x:-647.41304px;--logo-y:-245.93478px;}
+/* lubridge: source rectangle 1107,583,141,89; uniform scale 0.60674157. */
+.fair-logo-lubridge{--logo-w:85.55056px;--logo-h:54.00000px;--sheet-w:1164.94382px;--sheet-h:1242.00000px;--logo-x:-671.66292px;--logo-y:-353.73034px;}
+/* wenergex: source rectangle 1078,742,153,93; uniform scale 0.58064516. */
+.fair-logo-wenergex{--logo-w:88.83871px;--logo-h:54.00000px;--sheet-w:1114.83871px;--sheet-h:1188.58065px;--logo-x:-625.93548px;--logo-y:-430.83871px;}
+/* accl: source rectangle 984,1135,156,47; uniform scale 0.46153846. */
+.fair-logo-accl{--logo-w:72.00000px;--logo-h:21.69231px;--sheet-w:886.15385px;--sheet-h:944.76923px;--logo-x:-454.15385px;--logo-y:-523.84615px;}
+/* gjf: source rectangle 976,1294,69,71; uniform scale 0.76056338. */
+.fair-logo-gjf{--logo-w:52.47887px;--logo-h:54.00000px;--sheet-w:1460.28169px;--sheet-h:1556.87324px;--logo-x:-742.30986px;--logo-y:-984.16901px;}
+/* Gyeonggi IT Saeil: supplied image(20260928-082845).png, symbol 27,17,77,76. */
+.fair-logo-saeil-wrap{background:#02176a;border:1px solid #6087db50}
+.fair-logo-saeil{--logo-w:54.71053px;--logo-h:54.00000px;--sheet-w:278.52632px;--sheet-h:83.84211px;--logo-x:-19.18421px;--logo-y:-12.07895px;background-image:url("assets/gyeonggi-it-saeil.png");}
+/* Korea Polytechnics Seongnam: supplied image(20260928-121204).png.
+   Preserve the complete symbol and campus wordmark in their original proportions. */
+.fair-polytech-lockup{display:block;width:252px;max-width:100%;height:auto;border-radius:9px}
+/* seongnamjobs: source rectangle 1016,1634,124,91; uniform scale 0.58064516. */
+.fair-logo-seongnamjobs{--logo-w:72.00000px;--logo-h:52.83871px;--sheet-w:1114.83871px;--sheet-h:1188.58065px;--logo-x:-589.93548px;--logo-y:-948.77419px;}
+/* snip: source rectangle 258,1346,74,75; uniform scale 0.72000000. */
+.fair-logo-snip{--logo-w:53.28000px;--logo-h:54.00000px;--sheet-w:737.28000px;--sheet-h:1105.92000px;--logo-x:-185.76000px;--logo-y:-969.12000px;background-image:url("assets/job-fair-20260930.png");}
