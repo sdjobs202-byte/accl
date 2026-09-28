@@ -75,8 +75,8 @@
 .fair-logo-saeil-wrap{background:#02176a;border:1px solid #6087db50}
 .fair-logo-saeil{--logo-w:54.71053px;--logo-h:54.00000px;--sheet-w:278.52632px;--sheet-h:83.84211px;--logo-x:-19.18421px;--logo-y:-12.07895px;background-image:url("assets/gyeonggi-it-saeil.png");}
 /* Korea Polytechnics Seongnam: supplied image(20260928-121204).png.
-   Preserve the complete symbol and campus wordmark in their original proportions. */
-.fair-polytech-lockup{display:block;width:252px;max-width:100%;height:auto;border-radius:9px}
+   korea-polytechnics-seongnam-symbol.png: symbol 27,11,130,130 of that image with only the navy background made transparent (colors unchanged), shown on the white tile. */
+.fair-logo-polytech{--logo-w:58px;--logo-h:58px;--sheet-w:58px;--sheet-h:58px;--logo-x:0px;--logo-y:0px;background-image:url("assets/korea-polytechnics-seongnam-symbol.png");}
 /* seongnamjobs: source rectangle 1016,1634,124,91; uniform scale 0.58064516. */
 .fair-logo-seongnamjobs{--logo-w:72.00000px;--logo-h:52.83871px;--sheet-w:1114.83871px;--sheet-h:1188.58065px;--logo-x:-589.93548px;--logo-y:-948.77419px;}
 /* snip: source rectangle 258,1346,74,75; uniform scale 0.72000000. */
