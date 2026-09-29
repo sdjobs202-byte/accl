@@ -6,6 +6,7 @@
   const logo = dialog.querySelector('.company-dialog-logo');
   const title = document.getElementById('company-dialog-title');
   const text = document.getElementById('company-dialog-text');
+  const site = document.getElementById('company-dialog-site');
   let opener = null;
 
   document.querySelectorAll('.fair-company-button').forEach(button => {
@@ -14,6 +15,12 @@
       title.textContent = button.dataset.companyTitle || name;
       text.textContent = button.parentElement.querySelector('.fair-company-desc').textContent;
       logo.replaceChildren(button.querySelector('.fair-logo').cloneNode(true));
+      // 홈페이지 주소가 확인된 기업만 '홈페이지 방문' 버튼을 보여준다.
+      const url = button.dataset.companyUrl;
+      if (site) {
+        site.hidden = !url;
+        if (url) site.href = url; else site.removeAttribute('href');
+      }
       opener = button;
       dialog.showModal();
       title.focus({ preventScroll: true });

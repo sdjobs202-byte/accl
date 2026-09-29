@@ -198,3 +198,5 @@ body{word-break:keep-all;overflow-wrap:break-word}.sr-only{position:absolute!imp
 .fair-announcement-guestbook:hover,.fair-announcement-guestbook:focus-visible{animation-play-state:paused}
 @keyframes fair-announcement-float{0%,100%{translate:0 0}50%{translate:0 -4px}}
 @media(prefers-reduced-motion:reduce){.fair-announcement-guestbook{animation:none}}
+/* 포스터 다운로드를 숨긴 동안 닫기 버튼은 오른쪽 자리 유지 */
+.fair-download[hidden]+.fair-dismiss{margin-left:auto}
