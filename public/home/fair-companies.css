@@ -1,0 +1,29 @@
+/* 참여기업: 로고·이름 버튼과 기업 소개 창 */
+.fair-company-hint{margin:-8px 0 16px;font-size:14px;line-height:1.6;color:#52658c}
+.fair-company-grid li:nth-child(n){display:block;padding:0;min-height:0}
+.fair-company-button{display:grid;grid-template-columns:124px minmax(0,1fr) 26px;align-items:center;gap:20px;width:100%;min-height:92px;padding:15px 16px 15px 20px;border:0;border-radius:14px;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer;transition:background .15s ease,box-shadow .15s ease}
+.fair-company-button:hover{background:#eef5ff;box-shadow:inset 0 0 0 1px #cfe2ff}
+.fair-company-button:focus-visible{outline:3px solid #4a8cff;outline-offset:-3px}
+.fair-company-more{display:flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:17px;font-weight:700;line-height:1;color:#2f6fe0;background:#e3eeff;transition:background .15s ease,color .15s ease}
+.fair-company-button:hover .fair-company-more{color:#fff;background:linear-gradient(135deg,#049dff,#00c9f4)}
+@media(max-width:900px){.fair-company-button{grid-template-columns:112px minmax(0,1fr) 24px;gap:14px;padding-inline:12px}.fair-company-more{width:24px;height:24px;font-size:16px}}
+@media(max-width:760px){.fair-company-button{grid-template-columns:124px minmax(0,1fr) 24px;gap:20px;min-height:86px;padding:13px 7px}}
+@media(max-width:370px){.fair-company-button{grid-template-columns:112px minmax(0,1fr) 22px;gap:12px;padding-inline:0}.fair-company-more{width:22px;height:22px;font-size:15px}}
+
+.company-dialog{width:min(460px,calc(100% - 36px));max-height:calc(100dvh - 40px);overflow:auto;padding:38px 34px 30px;border:1px solid #cde6ff;border-radius:24px;color:#092364;text-align:center;background:linear-gradient(160deg,#fff 0%,#f4f8ff 100%);box-shadow:0 24px 70px #00123d59,0 0 0 6px #ffffff2e}
+.company-dialog[open]{animation:appear .2s ease-out}
+.company-dialog::backdrop{background:#020d2e8c;backdrop-filter:blur(2px)}
+.company-dialog-close{position:absolute;top:14px;right:14px;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid #d7e5fb;border-radius:12px;background:#fff;color:#274372;font-size:24px;line-height:1}
+.company-dialog-close:hover{background:#eef5ff}
+.company-dialog-logo{display:flex;justify-content:center;margin:0 auto 18px}
+.company-dialog-logo .fair-logo{width:150px;height:84px;border:1px solid #e1ebfa;border-radius:16px;box-shadow:0 8px 20px #0b2a6414}
+.company-dialog-kicker{display:inline-block;margin-bottom:8px;padding:4px 11px;border-radius:99px;background:#e8f1ff;color:#2f5fb6;font-size:12px;font-weight:750;letter-spacing:.08em}
+.company-dialog h2{margin:0 0 14px;font-size:26px;line-height:1.35;letter-spacing:-.04em;font-weight:850;color:#0b2a64}
+.company-dialog h2:focus{outline:none}
+.company-dialog-text{margin:0;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #e1ebfa;box-shadow:inset 0 2px 0 #fff,0 4px 14px #0b2a640d;font-size:16px;line-height:1.85;letter-spacing:-.02em;color:#2b3f63;text-align:left;word-break:keep-all;overflow-wrap:break-word}
+.company-dialog-done{display:block;width:100%;min-height:50px;margin-top:20px;border:0;border-radius:14px;color:#fff;font-size:16px;font-weight:800;background:linear-gradient(120deg,#0a4fd0,#049dff);box-shadow:0 4px 0 #0a3a9c,0 9px 18px #0b2a6433;transition:transform .15s ease,box-shadow .15s ease}
+.company-dialog-done:hover{transform:translateY(-2px)}
+.company-dialog-done:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3a9c,0 4px 10px #0b2a6433}
+.company-dialog button:focus-visible{outline:3px solid #4a8cff;outline-offset:3px}
+@media(max-width:520px){.company-dialog{padding:34px 20px 22px;border-radius:20px}.company-dialog h2{font-size:22px}.company-dialog-text{padding:15px 16px;font-size:15px}.company-dialog-logo .fair-logo{width:132px;height:74px}}
+@media(prefers-reduced-motion:reduce){.fair-company-button,.company-dialog-done{transition:none}.company-dialog[open]{animation:none}.company-dialog-done:hover{transform:none}}

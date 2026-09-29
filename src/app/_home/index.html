@@ -22,9 +22,11 @@
   <link rel="stylesheet" href="/home/fair-experiences.css">
   <link rel="stylesheet" href="/home/fair-schedule.css">
   <link rel="stylesheet" href="/home/fair-lottery.css">
+  <link rel="stylesheet" href="/home/fair-companies.css">
   <link rel="stylesheet" href="/home/home-extras.css">
   <script src="/home/app.js" defer></script>
   <script src="/home/fair-lottery.js" defer></script>
+  <script src="/home/fair-companies.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">본문 바로가기</a>
@@ -270,21 +272,21 @@
 <li class="fair-program fair-program-cyan"><span class="fair-program-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="18" height="18" rx="3"/><path d="M11 2v5M21 2v5M16 2v5M11 25v5M16 25v5M21 25v5M2 11h5M2 16h5M2 21h5M25 11h5M25 16h5M25 21h5M11 21l3-10 3 10M12 17h4M21 11v10"/></svg></span><span>AI 직무·기업분석</span></li>
 <li class="fair-program fair-program-pink"><span class="fair-program-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="21" height="25" rx="3"/><circle cx="15" cy="11" r="4"/><path d="M8 24v-2a7 7 0 0 1 14 0M25 17l1.5 3 3.5.5-2.5 2.5.5 3.5-3-1.5-3 1.5.5-3.5-2.5-2.5 3.5-.5Z"/></svg></span><span>AI 취업사진·스티커</span></li>
 <li class="fair-program fair-program-violet"><span class="fair-program-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12" width="26" height="6" rx="1"/><path d="M5 18v12h22V18M16 12v18"/><path d="M16 12C-1 11 8-5 16 12ZM16 12c17-1 8-17 0 0Z"/></svg></span><span>퀴즈·추첨 이벤트</span></li></ul></section>
-      <section class="fair-companies" aria-labelledby="fair-companies-title"><div class="fair-company-heading"><h3 id="fair-companies-title"><span aria-hidden="true"></span>참여기업</h3><span>14개 기업</span></div><ul class="fair-company-grid">
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-drtech"></span></span><span class="fair-company-name">디알텍</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-lubridge"></span></span><span class="fair-company-name">루브릿지</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-maum"></span></span><span class="fair-company-name">마음에이아이</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-murple"></span></span><span class="fair-company-name">머플</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-vowing"></span></span><span class="fair-company-name">보윙</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-xai"></span></span><span class="fair-company-name">엑스에이아이코리아</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-wenergex"></span></span><span class="fair-company-name">위에너젝스</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-ehan"></span></span><span class="fair-company-name">이한크리에이티브</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-jastecm"></span></span><span class="fair-company-name">자스텍엠</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-poddeal"></span></span><span class="fair-company-name">팟딜 · 지티엠케이</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-connecto"></span></span><span class="fair-company-name">커넥토</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-quopin"></span></span><span class="fair-company-name">쿠오핀</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-tritonnet"></span></span><span class="fair-company-name">트리톤넷</span></li>
-        <li><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-hansolbio"></span></span><span class="fair-company-name">한솔생명과학</span></li>
+      <section class="fair-companies" aria-labelledby="fair-companies-title"><div class="fair-company-heading"><h3 id="fair-companies-title"><span aria-hidden="true"></span>참여기업</h3><span>14개 기업</span></div><p class="fair-company-hint">로고나 기업명을 누르면 기업 소개를 볼 수 있어요.</p><ul class="fair-company-grid">
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-drtech"></span></span><span class="fair-company-name">디알텍</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>디지털 엑스레이 디텍터와 진단영상 시스템·소프트웨어를 개발하는 의료영상 전문기업으로, 글로벌 시장에서 영상진단 기술을 제공하고 있습니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-lubridge"></span></span><span class="fair-company-name">루브릿지</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>AI 기반의 산업용·운송용 윤활유 B2B 조달 플랫폼을 운영하며, 구매·견적·납품·정산 과정을 디지털로 연결하는 기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-maum"></span></span><span class="fair-company-name">마음에이아이</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>마음AI는 독자적인 피지컬AI 파운데이션 모델을 기반으로 AI 추론, 자율주행 기술 등을 융합한 다양한 피지컬AI 솔루션을 개발하고 상용화하고 있는 기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-murple"></span></span><span class="fair-company-name">머플</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>연구자와 학생의 논문 작성 및 학술 글쓰기 과정을 인공지능으로 지원하는 글로벌 AI 학술테크 서비스를 운영하고 있습니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-vowing"></span></span><span class="fair-company-name">보윙</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>음성 참여형 리워드 플랫폼 ‘보윙’을 운영하며, 자영업자와 스타트업·중소기업의 홍보와 고객 참여를 지원하는 기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-xai"></span></span><span class="fair-company-name">엑스에이아이코리아</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>기업의 전문자료와 업무 데이터를 기반으로 AI 검색·추론·업무자동화 서비스를 개발하는 생성형 AI 전문기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-wenergex"></span></span><span class="fair-company-name">위에너젝스</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>에너지와 배터리 분야의 기술 및 솔루션을 개발하는 기업으로, 전기·전자·제어 기술을 기반으로 관련 사업을 추진하고 있습니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-ehan"></span></span><span class="fair-company-name">이한크리에이티브</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>AR·VR·XR 기반의 관광·교육 콘텐츠와 메타버스 플랫폼을 개발하는 디지털 콘텐츠 전문기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-jastecm"></span></span><span class="fair-company-name">자스텍엠</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>자동차 IoT 디바이스와 데이터 허브 기술을 기반으로 차량·사물인터넷 데이터를 활용한 하드웨어와 소프트웨어 서비스를 개발하고 있습니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog" data-company-title="지티엠케이(GTMK)"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-poddeal"></span></span><span class="fair-company-name">팟딜 · 지티엠케이</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>지티엠케이(GTMK)는 스포츠와 여가의 빈틈을 가치로 바꾸는 매칭 플랫폼 서비스 ‘팟딜’을 운영하는 기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-connecto"></span></span><span class="fair-company-name">커넥토</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>(주)커넥토는 인간을 위한 인공지능 서비스를 개발하고 운영하는 패밀리테크 기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-quopin"></span></span><span class="fair-company-name">쿠오핀</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>㈜쿠오핀은 초저지연 영상 전송 반도체와 AI 영상분석 기술 기반 지능형 원격 영상 관제 및 제어/조종하는 제품을 공급하는 기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-tritonnet"></span></span><span class="fair-company-name">트리톤넷</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>IoT 네트워크, LoRa 통신, 스마트팩토리, 클라우드 및 환경측정 센서 기술을 제공하는 정보통신·IoT 전문기업입니다.</p></li>
+        <li><button class="fair-company-button" type="button" aria-haspopup="dialog"><span class="fair-logo" aria-hidden="true"><span class="fair-logo-crop fair-logo-hansolbio"></span></span><span class="fair-company-name">한솔생명과학</span><span class="fair-company-more" aria-hidden="true">+</span></button><p class="fair-company-desc" hidden>화장품과 식품 분야의 연구개발 및 ODM·OEM·OGM 생산을 수행하며, 제품기획부터 제조까지 통합 서비스를 제공하는 기업입니다.</p></li>
       </ul></section>
       <section class="fair-organizers" aria-label="주최·주관 및 협력 기관">
         <dl class="fair-organizer-grid">
@@ -413,6 +415,14 @@
       </section>
       <div class="fair-footer"><a class="fair-download" href="/home/assets/job-fair-20260930.png" download="ACCL_20260930_취업박람회_포스터.png">포스터 다운로드 <span aria-hidden="true">↓</span></a><button class="fair-dismiss" type="button" data-close-dialog="jobfair-dialog">닫기</button></div>
     </div>
+  </dialog>
+  <dialog class="company-dialog" id="company-dialog" aria-labelledby="company-dialog-title" aria-describedby="company-dialog-text">
+    <button class="company-dialog-close" type="button" aria-label="기업 소개 닫기">×</button>
+    <div class="company-dialog-logo" aria-hidden="true"></div>
+    <span class="company-dialog-kicker">참여기업 소개</span>
+    <h2 id="company-dialog-title" tabindex="-1"></h2>
+    <p class="company-dialog-text" id="company-dialog-text"></p>
+    <button class="company-dialog-done" type="button">닫기</button>
   </dialog>
 </body>
 </html>
