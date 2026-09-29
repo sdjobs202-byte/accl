@@ -56,3 +56,58 @@
  .fair-schedule-table tbody tr.fair-schedule-closing{box-shadow:inset 3px 0 0 #70d9ec}
 }
 @media(max-width:370px){.fair-schedule{padding-inline:14px}.fair-schedule-table tbody tr{padding:17px 14px}}
+
+/* ACCL_Quiz_Schedule_Update 제공 CSS (quiz-highlights.css) */
+/* Quiz party rows: warm pink/purple for round 1, cool blue/violet for round 2.
+   Paint the whole row so the time, title, and details stay one visual unit. */
+.fair-schedule-table tbody tr.fair-schedule-quiz-one{
+ --quiz-edge:#ffcee9;--quiz-ink:#713774;
+ background:linear-gradient(110deg,#693b9c 0%,#963c92 52%,#b94d70 100%);
+}
+.fair-schedule-table tbody tr.fair-schedule-quiz-two{
+ --quiz-edge:#b4f5ff;--quiz-ink:#245b91;
+ background:linear-gradient(110deg,#185b9c 0%,#3f5fb3 52%,#784ab0 100%);
+}
+.fair-schedule-table .fair-schedule-quiz>*{border-color:#ffffff26}
+.fair-schedule-table .fair-schedule-quiz .fair-schedule-time{
+ color:#fff;background:#ffffff08;box-shadow:inset 4px 0 0 var(--quiz-edge);
+}
+.fair-schedule-quiz .fair-schedule-time>span{color:#ffffffc9}
+.fair-schedule-table .fair-schedule-quiz .fair-schedule-main,
+.fair-schedule-table .fair-schedule-quiz .fair-schedule-detail{color:#fff}
+.fair-quiz-title{display:flex;align-items:center;gap:12px}
+.fair-quiz-pop{
+ display:grid;place-items:center;flex:0 0 44px;min-height:46px;
+ border:1px solid #ffffff47;border-radius:14px;background:#ffffff1c;
+ font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;
+ font-size:1.8125rem;line-height:1.15;
+ box-shadow:0 4px 9px #20124926,inset 0 1px 0 #ffffff24;transform:rotate(-7deg);
+}
+.fair-schedule-quiz-two .fair-quiz-pop{transform:rotate(7deg)}
+.fair-quiz-copy{min-width:0;display:grid;gap:4px}
+.fair-quiz-kicker{font-size:.875rem;line-height:1.5;font-weight:650;color:#ffffffdf;letter-spacing:0}
+.fair-quiz-name{font-size:1.125rem;line-height:1.6;font-weight:850;word-break:keep-all;overflow-wrap:normal}
+.fair-quiz-round{
+ display:inline-block;vertical-align:middle;margin-left:3px;padding:1px 8px;
+ border-radius:999px;background:#fff;color:var(--quiz-ink);
+ font-size:.875rem;font-weight:800;line-height:1.6;white-space:nowrap;
+ box-shadow:0 2px 6px #2612441c;
+}
+.fair-quiz-detail-text{display:block;word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:900px) and (min-width:701px){
+ .fair-quiz-title{gap:8px}
+ .fair-quiz-pop{flex-basis:36px;min-height:40px;border-radius:12px;font-size:1.5rem}
+ .fair-quiz-name{font-size:1.0625rem}
+}
+@media(max-width:700px){
+ .fair-schedule-table tbody tr.fair-schedule-quiz{box-shadow:inset 4px 0 0 var(--quiz-edge)}
+ .fair-schedule-table .fair-schedule-quiz .fair-schedule-time{
+  background:#ffffff17;border:1px solid #ffffff40;box-shadow:none;
+ }
+ .fair-schedule-table .fair-schedule-quiz .fair-schedule-detail{margin-top:12px}
+}
+/* 마지막 행 '경품 추첨 및 폐회': 퀴즈 행과 같은 톤앤매너, 청록→블루 그라데이션 */
+.fair-schedule-table tbody tr.fair-schedule-finale{
+ --quiz-edge:#a6f7ec;--quiz-ink:#0f6272;
+ background:linear-gradient(110deg,#0c6f7f 0%,#177f9c 50%,#2f5fb3 100%);
+}
