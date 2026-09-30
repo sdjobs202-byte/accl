@@ -23,17 +23,44 @@
 .company-dialog-text{margin:0;padding:18px 20px;border-radius:16px;background:#fff;border:1px solid #e1ebfa;box-shadow:inset 0 2px 0 #fff,0 4px 14px #0b2a640d;font-size:16px;line-height:1.85;letter-spacing:-.02em;color:#2b3f63;text-align:left;word-break:keep-all;overflow-wrap:break-word}
 .company-dialog-actions{display:flex;gap:10px;margin-top:20px}
 .company-dialog-actions>*{flex:1 1 0;min-width:0}
-.company-dialog-site{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:14px;color:#fff;font-size:16px;font-weight:800;text-decoration:none;background:linear-gradient(120deg,#0a4fd0,#049dff);box-shadow:0 4px 0 #0a3a9c,0 9px 18px #0b2a6433;transition:transform .15s ease,box-shadow .15s ease}
-.company-dialog-site:hover{transform:translateY(-2px)}
-.company-dialog-site:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3a9c,0 4px 10px #0b2a6433}
-.company-dialog-site:focus-visible{outline:3px solid #4a8cff;outline-offset:3px}
-.company-dialog-site:not([hidden])+.company-dialog-done{color:#274372;background:#fff;box-shadow:inset 0 0 0 1px #cfdcf3,0 4px 0 #d5e0f2}
-.company-dialog-site:not([hidden])+.company-dialog-done:active{box-shadow:inset 0 0 0 1px #cfdcf3,0 1px 0 #d5e0f2}
-.company-dialog-done{display:block;width:100%;min-height:50px;border:0;border-radius:14px;color:#fff;font-size:16px;font-weight:800;background:linear-gradient(120deg,#0a4fd0,#049dff);box-shadow:0 4px 0 #0a3a9c,0 9px 18px #0b2a6433;transition:transform .15s ease,box-shadow .15s ease}
-.company-dialog-done:hover{transform:translateY(-2px)}
-.company-dialog-done:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3a9c,0 4px 10px #0b2a6433}
+/* '채용공고'와 '홈페이지 방문'은 같은 파란 입체 버튼 */
+.company-dialog-jobs-toggle,.company-dialog-site{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border:0;border-radius:14px;color:#fff;font:inherit;font-size:16px;font-weight:800;text-decoration:none;background:linear-gradient(120deg,#0a4fd0,#049dff);box-shadow:0 4px 0 #0a3a9c,0 9px 18px #0b2a6433;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.company-dialog-jobs-toggle:hover,.company-dialog-site:hover{transform:translateY(-2px)}
+.company-dialog-jobs-toggle:active,.company-dialog-site:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3a9c,0 4px 10px #0b2a6433}
+.company-dialog-jobs-toggle:focus-visible,.company-dialog-site:focus-visible{outline:3px solid #4a8cff;outline-offset:3px}
+.company-dialog-jobs-toggle svg{flex:none;width:19px;height:19px}
+.company-dialog-jobs-caret{font-size:13px;line-height:1;transition:transform .2s ease}
+.company-dialog-jobs-toggle[aria-expanded="true"] .company-dialog-jobs-caret{transform:rotate(180deg)}
+/* 채용공고 펼침 칸 */
+.company-dialog-jobs{margin-top:16px;padding:16px 20px 18px;border-radius:16px;background:#f1f7ff;border:1px solid #d3e4fb;text-align:left;animation:appear .2s ease-out}
+.company-dialog-jobs h3{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:16px;line-height:1.5;font-weight:850;color:#0b2a64}
+.company-dialog-jobs h3::before{content:"";flex:none;width:18px;height:4px;border-radius:2px;background:linear-gradient(90deg,#0a4fd0,#049dff)}
+.company-dialog-jobs-body{font-size:15px;line-height:1.8;letter-spacing:-.02em;color:#2b3f63;word-break:keep-all;overflow-wrap:break-word}
+.company-dialog-jobs-body>*{margin:0}
+.company-dialog-jobs-body>*+*{margin-top:8px}
+.company-dialog-jobs-empty{color:#52658c}
+/* '닫기'는 아래 줄의 흰 버튼 */
+.company-dialog-done{display:block;width:100%;min-height:48px;margin-top:12px;border:0;border-radius:14px;color:#274372;font-size:16px;font-weight:800;background:#fff;box-shadow:inset 0 0 0 1px #cfdcf3,0 4px 0 #d5e0f2;transition:transform .15s ease,box-shadow .15s ease}
+.company-dialog-done:hover{transform:translateY(-2px);background:#f6f9ff}
+.company-dialog-done:active{transform:translateY(2px);box-shadow:inset 0 0 0 1px #cfdcf3,0 1px 0 #d5e0f2}
 .company-dialog button:focus-visible{outline:3px solid #4a8cff;outline-offset:3px}
 @media(max-width:520px){.company-dialog{padding:34px 20px 22px;border-radius:20px}.company-dialog h2{font-size:22px}.company-dialog-text{padding:15px 16px;font-size:15px}.company-dialog-logo .fair-logo{width:132px;height:74px}}
-@media(prefers-reduced-motion:reduce){.fair-company-button,.company-dialog-done,.company-dialog-site{transition:none}.company-dialog-site:hover{transform:none}.company-dialog[open]{animation:none}.company-dialog-done:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.fair-company-button,.company-dialog-done,.company-dialog-site,.company-dialog-jobs-toggle,.company-dialog-jobs-caret{transition:none}.company-dialog-site:hover,.company-dialog-jobs-toggle:hover{transform:none}.company-dialog-jobs{animation:none}.company-dialog[open]{animation:none}.company-dialog-done:hover{transform:none}}
 /* 참여기업 13개(홀수): 두 칸 배열에서 마지막 줄 바로 위 오른쪽 칸의 밑줄을 유지 */
 @media(min-width:761px){.fair-company-grid li:nth-last-child(2):nth-child(even){border-bottom:1px solid #dce7f7}}
+/* 채용공고 칸 안: 신입/경력 → 채용공고 내용 → 링크 */
+.company-jobs-position{padding:12px 14px;border-radius:12px;background:#fff;border:1px solid #d3e4fb}
+.company-jobs-label{display:inline-block;margin-bottom:5px;padding:2px 9px;border-radius:99px;background:#e3eeff;color:#2f5fb6;font-size:12px;line-height:1.5;font-weight:800}
+.company-jobs-position p{margin:0;font-size:15px;line-height:1.65;font-weight:750;color:#0b2a64}
+.company-jobs-detail{margin-top:14px}
+.company-jobs-detail h4{margin:16px 0 6px;font-size:14.5px;line-height:1.5;font-weight:850;color:#0b2a64}
+.company-jobs-detail h4:first-child{margin-top:0}
+.company-jobs-detail p{margin:0 0 6px}
+.company-jobs-detail ul,.company-jobs-detail ol{margin:0 0 6px;padding-left:19px}
+.company-jobs-detail li+li{margin-top:3px}
+.company-jobs-detail li::marker{color:#3b7fe8}
+.company-jobs-link{display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;margin-top:16px;border-radius:12px;color:#fff;font-size:15px;font-weight:800;text-decoration:none;background:linear-gradient(120deg,#0a4fd0,#049dff);box-shadow:0 3px 0 #0a3a9c,0 7px 14px #0b2a6426;transition:transform .15s ease,box-shadow .15s ease}
+.company-jobs-link:hover{transform:translateY(-2px)}
+.company-jobs-link:active{transform:translateY(2px);box-shadow:0 1px 0 #0a3a9c}
+.company-jobs-link:focus-visible{outline:3px solid #4a8cff;outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.company-jobs-link{transition:none}.company-jobs-link:hover{transform:none}}
