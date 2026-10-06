@@ -66,18 +66,7 @@ document.querySelectorAll('[data-close-dialog]').forEach(button => {
   button.addEventListener('click', () => document.getElementById(button.dataset.closeDialog)?.close());
 });
 
-// Announce the fair once per tab session; manual reopening stays available.
-// 행사일 이후에도 계속 노출 — 중지할 때 이 자동 열기 블록을 제거한다.
-const fairDialog = document.getElementById('jobfair-dialog');
-const fairDismissalKey = 'accl-jobfair-20260930-dismissed';
-let fairDismissed = false;
-try { fairDismissed = sessionStorage.getItem(fairDismissalKey) === '1'; } catch {}
-fairDialog.addEventListener('close', () => {
-  try { sessionStorage.setItem(fairDismissalKey, '1'); } catch {}
-});
-if (!fairDismissed &&!document.querySelector('.info-dialog[open]')) {
-  openDialog(fairDialog);
-}
+// 2026-10-06: 취업박람회 종료로 행사 팝업 자동 열기를 중지했다(팝업 마크업은 기록용으로 남김).
 
 if ('IntersectionObserver' in window) {
   const serviceNav = document.querySelector('.nav-link[href="#services"]');

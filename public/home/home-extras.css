@@ -44,3 +44,24 @@
   .reference-card{transition:none}
   .reference-card:hover{transform:none}
 }
+
+/* 최근 사업 소개: 가로로 긴 사업 배너 (2026-10-06 성남 취업박람회) */
+.recent-projects{padding-top:8px;padding-bottom:76px;scroll-margin-top:28px}
+.recent-projects .section-heading h2{color:#252d48}
+.recent-projects .section-heading h2>span{color:#6551aa}
+.project-banner{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:34px;align-items:center;padding:40px 44px;border-radius:28px;color:#fff;background:radial-gradient(ellipse at 100% 0%,#0077ea80,transparent 42%),linear-gradient(135deg,transparent 0 38%,#1663ee1c 38% 47%,transparent 47% 63%,#006bf71f 63% 71%,transparent 71%),linear-gradient(150deg,#073caa 0%,#061e65 46%,#053499 100%);border:1px solid #48c8ff59;box-shadow:0 18px 40px #061e6533}
+.project-banner-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.project-tag{display:inline-block;padding:4px 12px;border-radius:99px;border:1px solid #7feaff73;color:#bff6ff;font-size:13px;line-height:1.5;font-weight:800;letter-spacing:.02em}
+.project-tag-role{border-color:transparent;color:#062a6e;background:linear-gradient(90deg,#7feaff,#b8c8ff)}
+.project-banner-kicker{margin:0 0 6px;font-size:15px;line-height:1.6;font-weight:700;color:#c8e2ff}
+.project-banner h3{margin:0 0 14px;font-size:28px;line-height:1.4;letter-spacing:-.04em;font-weight:900;color:#fff}
+.project-banner-desc{margin:0 0 18px;font-size:16px;line-height:1.8;letter-spacing:-.02em;color:#dceaff;word-break:keep-all}
+.project-banner-chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.project-banner-chips li{padding:6px 13px;border-radius:10px;background:#ffffff17;border:1px solid #ffffff2e;font-size:14px;line-height:1.5;font-weight:700;color:#f2f7ff}
+.project-banner-facts{display:grid;gap:0;margin:0;padding:6px 22px;border-radius:20px;background:#ffffff12;border:1px solid #ffffff26;backdrop-filter:blur(4px)}
+.project-banner-facts>div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding:13px 0}
+.project-banner-facts>div+div{border-top:1px solid #ffffff1f}
+.project-banner-facts dt{font-size:13.5px;line-height:1.6;font-weight:800;color:#8fe9ff}
+.project-banner-facts dd{margin:0;font-size:15px;line-height:1.6;font-weight:650;color:#fff;word-break:keep-all;overflow-wrap:anywhere}
+@media(max-width:1050px){.project-banner{grid-template-columns:1fr;gap:24px;padding:36px 34px}}
+@media(max-width:680px){.recent-projects{padding-bottom:56px}.project-banner{padding:28px 20px;border-radius:22px}.project-banner h3{font-size:22px}.project-banner-desc{font-size:15px}.project-banner-facts{padding:4px 16px}.project-banner-facts>div{grid-template-columns:72px minmax(0,1fr);gap:10px}.project-banner-chips li{font-size:13px}}
