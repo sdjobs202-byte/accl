@@ -23,6 +23,9 @@ function getCertKey(title: string | null | undefined): string {
   return title.split(/\s+/)[0] ?? "기타";
 }
 
+// 사용하지 않는 기능(CSV 다운로드, PDF, 자격증 보기) 숨김. 다시 쓰려면 true로 변경.
+const SHOW_EXTRA_ACTIONS = false;
+
 type SortKey =
   | "issueDate-desc"
   | "issueDate-asc"
@@ -164,12 +167,14 @@ export default function CertificatesTable({
             <option value="number-desc">번호 ↓</option>
             <option value="score-desc">점수 ↓</option>
           </select>
-          <button
-            onClick={handleDownload}
-            className="px-4 py-2 bg-red-50 text-[#A92B2B] border border-red-200 rounded-lg text-sm font-medium hover:bg-red-100"
-          >
-            ⬇ CSV 다운로드
-          </button>
+          {SHOW_EXTRA_ACTIONS && (
+            <button
+              onClick={handleDownload}
+              className="px-4 py-2 bg-red-50 text-[#A92B2B] border border-red-200 rounded-lg text-sm font-medium hover:bg-red-100"
+            >
+              ⬇ CSV 다운로드
+            </button>
+          )}
         </div>
       </div>
 
@@ -195,12 +200,16 @@ export default function CertificatesTable({
               <th className="px-4 py-3 text-left text-gray-600 font-medium">
                 발급일
               </th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">
-                PDF
-              </th>
-              <th className="px-4 py-3 text-center text-gray-600 font-medium">
-                자격증 보기
-              </th>
+              {SHOW_EXTRA_ACTIONS && (
+                <>
+                  <th className="px-4 py-3 text-center text-gray-600 font-medium">
+                    PDF
+                  </th>
+                  <th className="px-4 py-3 text-center text-gray-600 font-medium">
+                    자격증 보기
+                  </th>
+                </>
+              )}
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -231,6 +240,8 @@ export default function CertificatesTable({
                 <td className="px-4 py-3 text-gray-500">
                   {new Date(cert.issueDate).toLocaleDateString("ko-KR")}
                 </td>
+                {SHOW_EXTRA_ACTIONS && (
+                <>
                 <td className="px-4 py-3 text-center">
                   {cert.pdfUrl ? (
                     <a
@@ -253,12 +264,14 @@ export default function CertificatesTable({
                     보기
                   </Link>
                 </td>
+                </>
+                )}
               </tr>
             ))}
             {filtered.length === 0 && (
               <tr>
                 <td
-                  colSpan={8}
+                  colSpan={SHOW_EXTRA_ACTIONS ? 8 : 6}
                   className="px-4 py-8 text-center text-gray-400"
                 >
                   조건에 해당하는 자격증이 없습니다.
